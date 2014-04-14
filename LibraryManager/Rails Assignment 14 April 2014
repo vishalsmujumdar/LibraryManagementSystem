@@ -1,0 +1,14 @@
+Assignment  for Vishal
+Create a library management system which will have the following functionalities:-
+
+    Admin can add new books. (Fields- Name, Description, Category,Belongs To,Image,Number of copies,Author)(CRUD operations)
+    Admin can issue any book to the users. (Fields- Date of issue and Date of return, Issued to(email id of the user and name))
+    Users other than admin can view the list of all the books.(Available or unavailable, if unavailable then the date of return and name of the person who issued it)
+    Use Devise and cancan for authentication and authorization
+
+
+Good to have:-
+
+    Allow mass upload of  books through excel sheet.
+    Integrate search and sort feature in the list page of all the books.
+    A mail should be sent to the user once he issue or return a book.
