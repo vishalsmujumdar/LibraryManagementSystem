@@ -32,6 +32,9 @@ gem 'devise', '~> 3.2.4'
 # Simple authorization solution for Rails which is decoupled from user roles. All permissions are stored in a single location.
 gem 'cancan', '~> 1.6.10'
 
+# Easy upload management for ActiveRecord
+gem 'paperclip', '~> 4.1.1'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

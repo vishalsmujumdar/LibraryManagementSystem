@@ -12,3 +12,22 @@ Good to have:-
     Allow mass upload of  books through excel sheet.
     Integrate search and sort feature in the list page of all the books.
     A mail should be sent to the user once he issue or return a book.
+
+
+class CreateBooks < ActiveRecord::Migration
+  def change
+    create_table :books do |t|
+      t.number :isbn
+      t.belongs_to :user
+      t.string :title
+      t.text :description
+      t.string :category
+      t.number :belongs_to
+      t.text :authors
+      t.string :availability
+      t.number :image
+
+      t.timestamps
+    end
+  end
+end

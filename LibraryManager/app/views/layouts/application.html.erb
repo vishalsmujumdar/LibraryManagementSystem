@@ -5,8 +5,30 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+
+
+  </script>
 </head>
 <body>
+
+<% flash.each do |key,value| %>
+		<p><%= value %></p>
+<% end %>
+
+<header>
+	<%= link_to "All Books", books_path %>
+	
+	<% if user_signed_in? %>
+	    Welcome <%= current_user.name %>.
+		<%= link_to "Add a new book", new_book_path %>
+	    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+	<% else %>
+	    <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+	<% end %>
+	
+
+</header>
 
 <%= yield %>
 
