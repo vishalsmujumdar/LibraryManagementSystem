@@ -14,3 +14,47 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+	$('#searchData').keyup(function(){
+		var searchTerm = $(this).val();
+		
+		if(searchTerm !== '') {
+			var host = window.location.host;
+			var url = 'http://' + host + '/users/ajaxsearchusers';
+			var searchdata = { 'searchterm' : searchTerm };
+
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType:'json',
+				data: searchdata,
+				success: function(data){
+					$('#searchResults').css('visibility','visible');
+					$('#searchResults').empty();
+					$.each(data,function(key,value){
+						var user = eval(value);
+						var html = '<div id="id_' + user.employee_id + '" class="user"><p>' +
+										user.name + '&nbsp&nbsp' + user.employee_id +
+										'<br />' + user.email +
+										'<input type="button" id="id_' + user.employee_id + '" class="user_selector" value="Select" />'
+								   '</p><hr>';
+						$('#searchResults').append(html);
+						
+					});
+				}
+			});
+		}
+		else
+		{
+			$('#searchResults').empty();
+			$('#searchResults').css('visibility','hidden');
+		}
+	});
+
+	
+});
+	$('.user').on('click',function(){
+		var div = $(this);
+		console.log(div.attr('id'));
+	});
