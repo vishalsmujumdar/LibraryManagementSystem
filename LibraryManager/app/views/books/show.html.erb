@@ -1,0 +1,23 @@
+<p>
+	ISBN -<br />
+	<%= @book.isbn %>
+</p>
+<p>
+	Title<br />
+	<%= @book.title %>
+</p>
+<p>
+	<%= image_tag @book.cover.url(:medium) %>
+</p>
+<p>
+	Description<br />
+	<%= @book.description %>
+</p>
+<p>
+	Category<br />
+	<%= @book.category %>
+</p>
+<p>
+	Authors<br />
+	<%= @book.authors %>
+</p>

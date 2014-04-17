@@ -16,6 +16,12 @@
 //= require_tree .
 
 $(document).ready(function(){
+
+	$('.usersubmit').click(function(){
+		var form = $(this);
+		console.log(form.attr('id'));
+	});
+
 	$('#searchData').keyup(function(){
 		var searchTerm = $(this).val();
 		
@@ -27,21 +33,24 @@ $(document).ready(function(){
 			$.ajax({
 				url: url,
 				type: "POST",
-				dataType:'json',
+				dataType:'html',
 				data: searchdata,
 				success: function(data){
 					$('#searchResults').css('visibility','visible');
 					$('#searchResults').empty();
-					$.each(data,function(key,value){
-						var user = eval(value);
-						var html = '<div id="id_' + user.employee_id + '" class="user"><p>' +
-										user.name + '&nbsp&nbsp' + user.employee_id +
-										'<br />' + user.email +
-										'<input type="button" id="id_' + user.employee_id + '" class="user_selector" value="Select" />'
-								   '</p><hr>';
-						$('#searchResults').append(html);
-						
-					});
+				//	$.each(data,function(key,value){
+				//		var user = eval(value);
+				//		var html = '<div id="id_' + user.employee_id + '" class="user"><p>' +
+				//						user.name + '&nbsp&nbsp' + user.employee_id +
+				//						'<br />' + user.email +
+				//						'<input type="button" id="id_' + user.employee_id + '" class="user_selector" value="Select" />'
+				//				   '</p><hr>';
+						//data = data.replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+						$('#searchResults').append(data);
+				//
+
+				//	});
+					console.log(data);	
 				}
 			});
 		}
@@ -53,8 +62,15 @@ $(document).ready(function(){
 	});
 
 	
+
+
 });
-	$('.user').on('click',function(){
-		var div = $(this);
-		console.log(div.attr('id'));
-	});
+
+
+function userSelect(){
+	var user = $(this);
+
+	alert(user.attr('id'));
+
+	return false;
+}

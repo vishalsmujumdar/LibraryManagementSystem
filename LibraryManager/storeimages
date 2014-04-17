@@ -1,0 +1,14 @@
+How to use file system to store images
+
+A good, basic starter strategy is like this:
+
+    Make a table called 'images'. Make sure it has an autoincrementing primary key (we'll call ID).
+    When a user uploads an image, insert a row into that table, including the original name of the file and the file extension. You'll probably also track uploading user, date/time, etc.
+    Get the last insert id from that query. Save the image to "your-image-path/(ID).(ext)" in the file system. For ex, "/images/350.png".
+    (Recommended) You can use the ID as the direct link to the image by making a simple wrapper script that loads the image by ID (thus obscuring the actual file name, or even keeping the images outside of the web directories). For ex, 'image.php?id=500' or '/image/500'. In that script, you can use the original file name from the table in the http header so that when they download it gets saved on the client under the original name.
+
+Areas of enhancement:
+
+    Thumbnail Support. On upload, generate a thumbnail, and store it as ".thumbnail.jpg". Use a wrapper script for thumbnail retreival based on ID.
+    Hashing directories. If you expect more than 1000 or so images, you'll want to break them into multiple subdirectories so the file system doesnt get sluggish (the exact point this happens varies by OS and other factors). So if you have an image ID of 6500, you might store it in "/images/6/6500.png"
+    Security. Validate that an uploaded image is an actual image before saving it to disk. This is especially important if you are allowing direct access to the images - you dont want to accept a .php file that can get uploaded and then executed. Also make sure your web server config is setup to prevent that sort of thing by preventing the execution of scripts from the images directories.
