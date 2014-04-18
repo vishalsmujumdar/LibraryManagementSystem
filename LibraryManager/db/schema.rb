@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140416104957) do
   add_index "bookissues", ["user_id"], name: "index_bookissues_on_user_id"
 
   create_table "bookitems", force: true do |t|
-    t.boolean  "availability"
+    t.boolean  "availability", default: true
     t.integer  "user_id"
     t.integer  "book_id"
     t.datetime "created_at"

@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   $objJSON = ActiveSupport::JSON 
 
   def ajaxsearchusers
+  	@book = Book.find(params[:bookid])
   	@name = { :value => params[:searchterm].capitalize }
 	@data = params[:searchterm].capitalize
 	@users = User.where(['name LIKE ?', "#{@data}%"])

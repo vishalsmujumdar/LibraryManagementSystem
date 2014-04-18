@@ -17,18 +17,19 @@
 
 $(document).ready(function(){
 
-	$('.usersubmit').click(function(){
-		var form = $(this);
-		console.log(form.attr('id'));
-	});
+	$('#showSearch').click(function() {
+           $('#user_select').slideToggle("fast");
+    });
 
 	$('#searchData').keyup(function(){
 		var searchTerm = $(this).val();
 		
 		if(searchTerm !== '') {
 			var host = window.location.host;
+			var thisURL = window.location.href.toString().split(host)[1].split('/');
+			var bookid = parseInt(thisURL[(thisURL.indexOf('books')+1)]);
 			var url = 'http://' + host + '/users/ajaxsearchusers';
-			var searchdata = { 'searchterm' : searchTerm };
+			var searchdata = { 'searchterm' : searchTerm, 'bookid' : bookid };
 
 			$.ajax({
 				url: url,
@@ -66,11 +67,3 @@ $(document).ready(function(){
 
 });
 
-
-function userSelect(){
-	var user = $(this);
-
-	alert(user.attr('id'));
-
-	return false;
-}

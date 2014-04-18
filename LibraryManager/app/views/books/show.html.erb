@@ -21,3 +21,27 @@
 	Authors<br />
 	<%= @book.authors %>
 </p>
+
+<h2>Book Items</h2>
+<% @book.bookitems.each do |item| %>
+  <p>
+    <strong>Availability:</strong>
+    <%= item.availability ? "Available" : "Issued" %>
+  </p>
+ 
+  <p>
+    <strong>Owner Id:</strong>
+    <%= item.user.name %>
+  </p>
+<% end %>
+
+
+<p id = "showSearch">
+	Add Book Item
+</p>
+
+<div id="user_select" style="display:none;">
+	Search User:
+	<input style="width:150px;" id="searchData" type="text"></div>
+	<div id="searchResults" style="visibility:hidden"></div>
+</div>

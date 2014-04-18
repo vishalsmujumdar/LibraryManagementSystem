@@ -1,15 +1,16 @@
 <% @users.each do |user| %>
-	<% form_id = "user_#{user.employee_id}" %>
+	<% form_id = "#{user.employee_id}" %>
 
 	<div class="user">
 		<p>
-			<%= form_for user, url: "#", :html => {:id => form_id , :class => "user_selector"} do |f| %>
+			<%= form_for user, url: "/books/#{@book.id}/bookitems", method: :post do |f| %>
 				<%= f.label :name, user.name %>
 				&nbsp&nbsp
 				<%= f.label :employee_id, user.employee_id %>
 				<br />
 				<%= f.label :email, user.email %>
-				<%= f.submit "Select", :id => form_id, :class => "usersubmit", :onclick => 'return userSelect();' %>
+				<%= f.hidden_field :employee_id, value: user.employee_id %>
+				<%= f.submit "Select", :id => form_id, :class => "usersubmit" %>
 			<% end %>
 		</p>
 		<hr>

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   post 'users/ajaxsearchusers'
-
+  
   devise_for :users
 
   resources :books do

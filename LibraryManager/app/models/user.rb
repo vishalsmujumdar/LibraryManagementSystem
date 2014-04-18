@@ -5,5 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :bookissues
+  has_many :bookitems
   has_many :books, through: :bookissues
 end
