@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  	<script type="text/javascript">
+    	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
+  	</script>
+<% end %>
+
 <p>
 	ISBN -<br />
 	<%= @book.isbn %>
@@ -22,7 +28,8 @@
 	<%= @book.authors %>
 </p>
 
-<h2>Book Items</h2>
+<h2>Book Items [<%= @book.number_of_copies %>]</h2>
+
 <% @book.bookitems.each do |item| %>
   <p>
     <strong>Availability:</strong>
@@ -32,6 +39,9 @@
   <p>
     <strong>Owner Id:</strong>
     <%= item.user.name %>
+  </p>
+  <p>
+  	<%= link_to "Issue a copy", new_book_bookitem_bookissue_path(@book,item.id) %>
   </p>
 <% end %>
 

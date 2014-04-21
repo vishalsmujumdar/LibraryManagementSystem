@@ -1,0 +1,37 @@
+$(function() {
+  	$('#showSearch').click(function() {
+      	$('#user_select').slideToggle("fast");
+	});
+
+    $('#searchData').keyup(function(){
+		var searchTerm = $(this).val();
+		
+		if(searchTerm !== '') {
+			var host = window.location.host;
+			var thisURL = window.location.href.toString().split(host)[1].split('/');
+			var bookid = parseInt(thisURL[(thisURL.indexOf('books')+1)]);
+			var bookitemid = parseInt(thisURL[(thisURL.indexOf('bookitems')+1)])
+			console.log(bookitemid);
+			var url = '/users/ajaxsearchusers';
+			var searchdata = { 'searchterm' : searchTerm, 'bookid' : bookid , 'bookitemid' : bookitemid };
+
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType:'html',
+				data: searchdata,
+				success: function(data){
+					$('#searchResults').css('visibility','visible');
+					$('#searchResults').empty();
+					$('#searchResults').append(data);
+				}
+			});
+		}
+		else
+		{
+			$('#searchResults').empty();
+			$('#searchResults').css('visibility','hidden');
+		}
+	});
+
+});

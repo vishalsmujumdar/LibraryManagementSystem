@@ -3,7 +3,7 @@
 
 	<div class="user">
 		<p>
-			<%= form_for user, url: "/books/#{@book.id}/bookitems", method: :post do |f| %>
+			<%= form_for user, url: @path, method: :post do |f| %>
 				<%= f.label :name, user.name %>
 				&nbsp&nbsp
 				<%= f.label :employee_id, user.employee_id %>

@@ -11,12 +11,16 @@ class BookitemsController < ApplicationController
   	@user = User.where(["employee_id = ?", @paramuser[:employee_id].to_i]).first
   	@bookitem.user_id = @user[:id]
 
-	if @bookitem.save
-		@book.number_of_copies += 1
-		@book.save
-		redirect_to book_path(@book), :notice => "Book item saved successfully"
-	else
-		render "new"
-	end
+  	if @bookitem.save
+  		@book.number_of_copies += 1
+  		@book.save
+  		redirect_to book_path(@book), :notice => "Book item saved successfully"
+  	else
+  		render "new"
+  	end
+  end
+
+  def returnbookitem
+
   end
 end
