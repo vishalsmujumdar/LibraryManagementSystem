@@ -1,0 +1,8 @@
+<% @books.each do |book| %>
+	<div class="book">
+		<p>
+			<%= link_to "#{book.title}", book_path(book) %>
+		</p>
+		<hr>
+	</div>
+<% end %>

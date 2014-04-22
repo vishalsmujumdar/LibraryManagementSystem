@@ -13,3 +13,40 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function(){
+	$('.showBookSearch').click(function(){
+		$('#book_select').slideToggle("fast");
+	});
+
+	$('#searchBookData').keyup(function(){
+		var searchTerm = $(this).val();
+		
+		if(searchTerm !== '') {
+			var url = '/books/ajaxsearchbooks';
+			var searchdata = { 'searchterm' : searchTerm };
+			console.log(url);
+			console.log(searchdata);
+			
+			$.ajax({
+				url: url,
+				type: "POST",
+				dataType:'html',
+				data: searchdata,
+				success: function(data){
+					console.log(data);
+					$('#bookSearchResults').css('visibility','visible');
+					$('#bookSearchResults').empty();
+					$('#bookSearchResults').append(data);
+				}
+			});
+		}
+		else
+		{
+			$('#bookSearchResults').empty();
+			$('#bookSearchResults').css('visibility','hidden');
+		}
+	});
+
+
+});

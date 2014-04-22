@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416104957) do
+ActiveRecord::Schema.define(version: 20140422141501) do
 
   create_table "bookissues", force: true do |t|
     t.integer  "user_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20140416104957) do
     t.datetime "date_of_return"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "status",         default: false
   end
 
   add_index "bookissues", ["bookitem_id"], name: "index_bookissues_on_bookitem_id"
@@ -41,7 +42,7 @@ ActiveRecord::Schema.define(version: 20140416104957) do
     t.text     "description"
     t.string   "category"
     t.text     "authors"
-    t.integer  "number_of_copies"
+    t.integer  "number_of_copies",   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cover_file_name"

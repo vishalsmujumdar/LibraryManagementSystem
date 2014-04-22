@@ -20,7 +20,5 @@ class BookitemsController < ApplicationController
   	end
   end
 
-  def returnbookitem
-
-  end
+  
 end

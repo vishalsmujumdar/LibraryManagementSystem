@@ -1,5 +1,8 @@
 class BooksController < ApplicationController
-	before_filter :authenticate_user!, :except => [:show, :index]
+	before_filter :authenticate_user!, :except => [:show, :index, :ajaxsearchbooks]
+	
+	$objJSON = ActiveSupport::JSON
+
 	def index
 		@books = Book.all
 	end
@@ -20,13 +23,27 @@ class BooksController < ApplicationController
 	end
 	def show
 		@book = Book.find(params[:id]) 
-		
 	end
 	def update
 		
 	end
 	def destroy
 		
+	end
+
+	def ajaxsearchbooks
+		@returnhtml = ""
+
+		@value = params[:searchterm].capitalize
+		@books = Book.where(["title LIKE ?","#{@value}%"])
+		#@booksJSON = $objJSON.encode(@book)
+		
+		@returnhtml = @books.size == 0 ? "No books match search term" : render_to_string(partial: 'bookforms')
+		
+		respond_to do |format|
+		   format.html { render :html => @returnhtml }
+		   format.json { render :json => @booksJSON }
+		end
 	end
 
 	private

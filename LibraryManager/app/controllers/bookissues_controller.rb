@@ -1,5 +1,6 @@
 class BookissuesController < ApplicationController
-
+	before_filter :authenticate_user!
+	
 	def new
 		@book = Book.find(params[:book_id])
 		@bookitem = @book.bookitems.find(params[:bookitem_id])
@@ -18,7 +19,11 @@ class BookissuesController < ApplicationController
 
   		# set dates for issue and return
   		@bookissue.date_of_issue = Date.today
-  		@bookissue.date_of_return = @bookissue.date_of_issue + 30
+  		@bookissue.date_of_return = @bookissue.date_of_issue + 30.days
+
+  		# set status of bookissue to true => indicating it is active
+  		@bookissue.status = true
+
 		# update bookitem availability to false
 		if @bookissue.save
 			@bookitem.update_attributes!(:availability => false)
@@ -29,4 +34,22 @@ class BookissuesController < ApplicationController
 
 	end
 
+	def update
+		@bookissue = Bookissue.find(params[:id])
+
+		# change status of bookissue to false => indication book is returned
+		@bookissue.status = false
+
+		# update bookitem availability to true
+		@bookitem = @bookissue.bookitem
+		@bookitem.update_attributes!(:availability => true)
+
+		if @bookissue.save
+			redirect_to book_path(@bookissue.bookitem.book), :notice => "Book returned"
+		else
+			render :back
+		end
+
+
+  	end
 end

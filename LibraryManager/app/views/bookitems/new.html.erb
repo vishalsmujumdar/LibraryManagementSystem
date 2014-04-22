@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  	<script type="text/javascript">
+    	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
+  	</script>
+<% end %>
+
 <h1>Bookitem new</h1>
 <%= @book.title %>
 <br />

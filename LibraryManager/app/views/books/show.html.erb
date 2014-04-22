@@ -31,22 +31,49 @@
 <h2>Book Items [<%= @book.number_of_copies %>]</h2>
 
 <% @book.bookitems.each do |item| %>
-  <p>
-    <strong>Availability:</strong>
-    <%= item.availability ? "Available" : "Issued" %>
-  </p>
- 
-  <p>
-    <strong>Owner Id:</strong>
-    <%= item.user.name %>
-  </p>
-  <p>
-  	<%= link_to "Issue a copy", new_book_bookitem_bookissue_path(@book,item.id) %>
-  </p>
+	<% if item.availability %>
+		<p>
+		    <strong>Availability:</strong>
+		    <%= "Available" %>
+		</p>
+		<p>
+		    <strong>Owner:</strong>
+		    <%= item.user.name %>
+		</p>
+		<p>
+		  	<%= link_to "Issue this copy", new_book_bookitem_bookissue_path(@book,item.id) %>
+		</p>
+	<% else %>
+		<% latestbookissue = item.bookissues.last %>
+		<p>
+		    <strong>Availability:</strong>
+		    <%= "Issued" %>
+		</p>
+		<p>
+		    <strong>Owner:</strong>
+		    <%= item.user.name %>
+		</p>
+		<p>
+		    <strong>Issued By:</strong>
+		    <%= latestbookissue.user.name %>
+		</p>
+		<p>
+		    <strong>Date of Issue:</strong>
+		    <%= latestbookissue.date_of_issue.to_date %>
+		</p>
+		<p>
+		    <strong>Date of Return:</strong>
+		    <%= latestbookissue.date_of_return.to_date %>
+		</p>
+		<p>
+		  	<%= link_to "Return this copy", book_bookitem_bookissue_path(@book,item,latestbookissue.id), method: :patch %>
+		</p>
+	<% end %>
+  
 <% end %>
 
 
-<p id = "showSearch">
+<p class = "showUserSearch">
 	Add Book Item
 </p>
 

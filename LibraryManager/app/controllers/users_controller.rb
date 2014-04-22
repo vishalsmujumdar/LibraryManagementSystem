@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   $objJSON = ActiveSupport::JSON 
 
   def ajaxsearchusers
+  	@returnhtml = ""
+
   	@book = Book.find(params[:bookid])
   	@path = book_bookitems_path(@book)
   	
@@ -13,11 +15,10 @@ class UsersController < ApplicationController
   	@name = { :value => params[:searchterm].capitalize }
 	@data = params[:searchterm].capitalize
 	@users = User.where(['name LIKE ?', "#{@data}%"])
-	@usersJSON = $objJSON.encode(@user)
+	#@usersJSON = $objJSON.encode(@user)
 	
-	@returnhtml = ""
-
-	@returnhtml = render_to_string(partial: 'userforms') 
+	@returnhtml = @users.size == 0 ? "No users match search term" : render_to_string(partial: 'userforms') 
+	
 	#@users.each do |u|
 	#	@returnhtml << '<div class="user" id="id_' + u.employee_id.to_s + '">'+u.name+'</div>'
 	#end
