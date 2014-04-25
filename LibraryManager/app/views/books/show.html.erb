@@ -29,56 +29,64 @@
 </p>
 
 <h2>Book Items [<%= @book.number_of_copies %>]</h2>
+<% if can? :create, @bookitem %>
+	<p class = "showUserSearch">
+		Add Book Item
+	</p>
 
+	<div id="user_select" style="display:none;">
+		Search User:
+		<input style="width:150px;" id="searchData" type="text"></div>
+		<div id="searchResults" style="visibility:hidden"></div>
+	</div>
+<% end %>
 <% @book.bookitems.each do |item| %>
-	<% if item.availability %>
-		<p>
-		    <strong>Availability:</strong>
-		    <%= "Available" %>
-		</p>
-		<p>
-		    <strong>Owner:</strong>
-		    <%= item.user.name %>
-		</p>
-		<p>
-		  	<%= link_to "Issue this copy", new_book_bookitem_bookissue_path(@book,item.id) %>
-		</p>
-	<% else %>
-		<% latestbookissue = item.bookissues.last %>
-		<p>
-		    <strong>Availability:</strong>
-		    <%= "Issued" %>
-		</p>
-		<p>
-		    <strong>Owner:</strong>
-		    <%= item.user.name %>
-		</p>
-		<p>
-		    <strong>Issued By:</strong>
-		    <%= latestbookissue.user.name %>
-		</p>
-		<p>
-		    <strong>Date of Issue:</strong>
-		    <%= latestbookissue.date_of_issue.to_date %>
-		</p>
-		<p>
-		    <strong>Date of Return:</strong>
-		    <%= latestbookissue.date_of_return.to_date %>
-		</p>
-		<p>
-		  	<%= link_to "Return this copy", book_bookitem_bookissue_path(@book,item,latestbookissue.id), method: :patch %>
-		</p>
-	<% end %>
-  
+	<div class="bookitem">
+		<% if item.availability %>
+			<p>
+			    <strong>Availability:</strong>
+			    <%= "Available" %>
+			</p>
+			<p>
+			    <strong>Owner:</strong>
+			    <%= link_to item.user.name, user_path(item.user) %>
+			</p>
+			<p>
+				<% if can? :create, @bookissue %>
+			  		<%= link_to "Issue this copy", new_book_bookitem_bookissue_path(@book,item.id) %>
+			  	<% end %>
+			</p>
+		<% else %>
+			<% latestbookissue = item.bookissues.last %>
+			<p>
+			    <strong>Availability:</strong>
+			    <%= "Issued" %>
+			</p>
+			<p>
+			    <strong>Owner:</strong>
+			    <%= link_to item.user.name, user_path(item.user) %>
+			</p>
+			<p>
+			    <strong>Issued By:</strong>
+			    <%= link_to  latestbookissue.user.name, user_path(latestbookissue.user) %>
+			</p>
+			<p>
+			    <strong>Date of Issue:</strong>
+			    <%= latestbookissue.date_of_issue.to_date %>
+			</p>
+			<p>
+			    <strong>Date of Return:</strong>
+			    <%= latestbookissue.date_of_return.to_date %>
+			</p>
+			<p>
+				<% if can? :update, @bookissue %>
+			  		<%= link_to "Return this copy", book_bookitem_bookissue_path(@book,item,latestbookissue.id), method: :patch %>
+			  	<% end %>
+			</p>
+		<% end %>
+		<%= link_to "View book item", book_bookitem_path(@book,item) %>
+	  	<hr />
+		</div>
+	
 <% end %>
 
-
-<p class = "showUserSearch">
-	Add Book Item
-</p>
-
-<div id="user_select" style="display:none;">
-	Search User:
-	<input style="width:150px;" id="searchData" type="text"></div>
-	<div id="searchResults" style="visibility:hidden"></div>
-</div>

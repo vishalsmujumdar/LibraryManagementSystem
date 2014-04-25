@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140422141501) do
+ActiveRecord::Schema.define(version: 20140425142658) do
 
   create_table "bookissues", force: true do |t|
     t.integer  "user_id"
@@ -20,7 +20,8 @@ ActiveRecord::Schema.define(version: 20140422141501) do
     t.datetime "date_of_return"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "status",         default: false
+    t.boolean  "status",                default: false
+    t.datetime "date_of_actual_return"
   end
 
   add_index "bookissues", ["bookitem_id"], name: "index_bookissues_on_bookitem_id"

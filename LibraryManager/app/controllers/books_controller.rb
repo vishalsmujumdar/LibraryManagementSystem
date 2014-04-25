@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 	before_filter :authenticate_user!, :except => [:show, :index, :ajaxsearchbooks]
-	
+	load_and_authorize_resource
 	$objJSON = ActiveSupport::JSON
 
 	def index

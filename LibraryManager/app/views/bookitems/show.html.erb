@@ -1,0 +1,16 @@
+<h1>
+	<%= @bookitem.id %>&nbsp;&nbsp;<%= @bookitem.book.title %>
+</h1>
+
+
+<% @bookitem.bookissues.each do |bookissue| %>
+	<p>
+		<%= bookissue.user.name %>
+	</p>
+	<p>
+		<%= bookissue.date_of_issue.to_date %>
+	</p>
+	<p>
+		<%= bookissue.status ? "Still Issued" : "Returned" %>
+	</p>
+<% end %>

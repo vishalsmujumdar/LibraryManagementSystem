@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   $objJSON = ActiveSupport::JSON 
 
+  def show
+  	@user = User.find(params[:id])
+  end
+
   def ajaxsearchusers
   	@returnhtml = ""
 

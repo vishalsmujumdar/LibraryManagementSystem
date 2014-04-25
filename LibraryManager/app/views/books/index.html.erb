@@ -1,5 +1,5 @@
 <h1>
-	index for books
+	All Books
 </h1>
 
 <% @books.each do |book| %>
@@ -9,4 +9,6 @@
 	</p>
 
 <% end %>
-<%= link_to "Add new book", new_book_path %>
+<% if can? :create, @book %>
+	<%= link_to "Add new book", new_book_path %>
+<% end %>

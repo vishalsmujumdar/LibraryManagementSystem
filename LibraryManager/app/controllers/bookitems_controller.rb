@@ -1,4 +1,7 @@
 class BookitemsController < ApplicationController
+  before_filter :authenticate_user!
+  load_and_authorize_resource
+
   def new
   	@book = Book.find(params[:book_id])
   	@bookitem = Bookitem.new
@@ -18,6 +21,11 @@ class BookitemsController < ApplicationController
   	else
   		render "new"
   	end
+  end
+
+  def show
+    @bookitem = Bookitem.find(params[:id])
+
   end
 
   
