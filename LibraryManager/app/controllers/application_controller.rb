@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
 	  def devise_parameter_sanitizer
 	    if :sessions_controller?
 	      super
-	    elsif resource_class == User and :registrations_controller?
+	  	end
+	    
+	    if resource_class == User and :registrations_controller?
 	      User::ParameterSanitizer.new(User, :user, params)
 	    end
 	  end

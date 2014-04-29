@@ -13,3 +13,94 @@
  *= require_tree .
  *= require_self
  */
+header {
+  		/*border: 1px solid;*/
+  		background: none repeat scroll 0% 0% #4472B9;
+		margin: -10px 0px 0px -10px;
+		padding: 10px;
+		color: #ffffff;
+		width: 100%;
+		overflow: auto;
+  	}
+  	header a,
+  	header a:link,
+  	header a:hover,
+  	header a:visited{
+  		text-decoration: none;
+  		color: #ffffff;
+  	}
+
+  	#navigation {
+  		/*border: 1px solid;*/
+  		float: right;
+		margin: 0px 40px 0px 0px;
+		padding: 10px;
+  	}
+  	.nav-item {
+		/*border: 1px solid;*/  		
+		float: left;
+		margin: 0px 10px;
+		cursor: pointer;
+		font-size: 16px;
+  	}
+  	#site-title {
+  		/*border: 1px solid;*/
+  		float: left;
+		padding: 6px 70px;
+		margin: 0px 0px 0px 60px;
+		font-size: 22px;
+		font-weight: bold;
+  	}
+
+  	#banner-container {
+  		width: 100%;
+		height: 320px;
+		position: relative;
+		background-color: #000;
+		margin: 0px 0px 0px -8px;
+		padding: 0px 10px;
+		color:#fff;
+  	}
+
+  	#banner {
+		/*border: 1px solid;*/
+		box-shadow: 50px 0px 120px -20px #000 inset, 50px 0px 120px -40px #000 inset, -50px 0px 120px -20px #000 inset, -50px 0px 120px -40px #000 inset, 0px 10px 10px -10px #000 inset, 0px -10px 10px -10px #000 inset;
+		max-height: 320px;
+		background: white;
+		height: 320px;
+		width: 85%;
+		margin: 0px auto;
+		position: relative;
+		background: url("13.jpg");
+		background-repeat: no-repeat;
+  	}
+  	#banner-main-group {
+  		/*border: 1px solid;*/
+  		height: 320px;
+		top: 0px;
+		position: absolute;
+		width: 80%;
+		margin: 0px 90px;
+		padding: 0px 25px 0px 40px;
+		font-family: 'Enriqueta', 'serif';
+  		text-shadow: 0px 0px 24px rgba(0, 0, 0, 0.5), 0px 0px 64px rgba(0, 0, 0, 0.25), 0px 2px rgba(0, 0, 0, 0.75);
+  	}
+  	#banner-tagline {
+  		/*border: 1px solid;*/
+  	}
+  	#banner-tagline h1 {
+  		font-size: 48px;
+
+  	}
+  	#banner-searchbar input {
+  		/*border: 1px solid;*/
+		padding: 6px 10px;
+		border-radius: 1px;
+		border: 0px none;
+		width: 470px;
+		height: 22px;
+		box-shadow: 0px 0px 0px 1px #555 inset, 0px 0px 0px 6px rgba(255, 255, 255, 0.5), 0px 0px 4px 6px rgba(0, 0, 0, 0.25);
+  	}
+  	#banner-text {
+  		/*border: 1px solid;*/
+  	}

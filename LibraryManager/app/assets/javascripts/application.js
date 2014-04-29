@@ -53,3 +53,23 @@ $(document).ready(function(){
 //}, 5000);
 
 });
+
+function Randomize() {
+	var images = new Array("/assets/1.jpg",
+						   "/assets/2.jpg",
+						   "/assets/3.jpg",
+						   "/assets/6.jpg",
+						   "/assets/7.jpg",
+						   "/assets/8.jpg",
+						   "/assets/9.jpg",
+						   "/assets/10.jpg",
+						   "/assets/11.jpg",
+						   "/assets/12.jpg",
+						   "/assets/13.jpg",
+						   "/assets/14.jpg"
+						   );
+	var imageNum = Math.floor(Math.random() * images.length);
+	document.getElementById("banner").style.background = "url('" + images[imageNum] + "')";
+}
+
+window.onload = Randomize;
