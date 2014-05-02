@@ -1,0 +1,32 @@
+<h1>Update Book</h1>
+
+<%= form_for @book, :html => { :multipart => true } do |f| %>
+	<p>
+		<%= f.label :isbn, "ISBN - " %><br />
+		<%= f.text_field :isbn %>
+	</p>
+	<p>
+		<%= f.label :title, "Title" %><br />
+		<%= f.text_field :title %>
+	</p>
+	<p>
+		<%= f.label :description, "Description" %><br />
+		<%= f.text_field :description %>
+	</p>
+	<p>
+		<%= f.label :category, "Category" %><br />
+		<%= f.text_field :category %>
+	</p>
+	<p>
+		<%= f.label :authors, "Authors" %><br />
+		<%= f.text_field :authors %>
+	</p>
+	<p>
+		<%= f.label :cover, "Cover photo"%><br />
+		<%= f.file_field :cover %>
+	</p>
+	<p>
+		<%= f.submit "Update book"%>
+	</p>
+
+<% end %>

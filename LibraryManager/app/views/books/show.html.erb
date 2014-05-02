@@ -3,7 +3,8 @@
     	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
   	</script>
 <% end %>
-
+<h2>Book</h2>
+<%= link_to "Edit", edit_book_path(@book) %>
 <p>
 	ISBN -<br />
 	<%= @book.isbn %>

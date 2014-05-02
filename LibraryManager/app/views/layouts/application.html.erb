@@ -6,6 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Enriqueta:400,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
   <%= yield :head %>
 
   <style type="text/css">
@@ -52,26 +53,32 @@
 			<h1>Welcome to the FIRM ODC Library Manager</h1>
 		</div>
 		<div id="banner-searchbar" class="">
-			<input type="text" class="search-input" placeholder="Search for your favorite book"></input>
+			<input type="text" id="searchBookData" class="search-input" placeholder="Search for your favorite book"></input>
+			<div id="bookSearchResults" class="book-search-results" style="visibility:hidden">
+
+			</div>
 		</div>
 		<div id="banner-text" class="">
-			<span>Here you can manage books. Sign in to know more</span>
+			<span>Search for books and their availability. Manage books and book issues.</span>
 		</div>
 	</div>
 </div>
 
-<% flash.each do |key,value| %>
-		<p><%= value %></p>
-<% end %>
+<div id="main-container">
+	<div id="flash-message-container">
+		<% flash.each do |key,value| %>
+				<p><%= value %></p>
+		<% end %>
+	</div>
 
-<p class = "showBookSearch">
-	Search a book
-</p>
-<div id="book_select" style="display:none;">
-	<input style="width:150px;" id="searchBookData" type="text" placeholder="Enter book name"></div>
-	<div id="bookSearchResults" style="visibility:hidden"></div>
+	<%= yield %>
+
 </div>
-<%= yield %>
+<div id="footer-wrapper">
+	<div id="site-footer">
+		FIRM ODC
+	</div>
+</div>
 
 </body>
 </html>

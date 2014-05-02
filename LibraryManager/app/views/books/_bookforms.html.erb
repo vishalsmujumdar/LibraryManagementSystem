@@ -1,8 +1,16 @@
 <% @books.each do |book| %>
 	<div class="book">
-		<p>
+		<div class="bookcover">
+			<%= image_tag book.cover.url(:thumb) %>
+		</div>
+		<div class="booktitle">
 			<%= link_to "#{book.title}", book_path(book) %>
-		</p>
-		<hr>
+		</div>
+		<div class="bookcategory">
+			<%= book.category %>
+		</div>
+		<div class="bookauthors">
+			<%= book.authors %>
+		</div>
 	</div>
 <% end %>
