@@ -1,3 +1,9 @@
+<% content_for :head do %>
+  	<%= javascript_include_tag "angular.js" %>
+  	<%= javascript_include_tag "app.js" %>
+  	<%= javascript_include_tag "controllers.js" %>
+  	
+<% end %>
 <h1>new boook</h1>
 
 <%= form_for @book, :html => { :multipart => true } do |f| %>
@@ -19,7 +25,15 @@
 	</p>
 	<p>
 		<%= f.label :authors, "Authors" %><br />
-		<%= f.text_field :authors %>
+		
+		<div ng-app="AuthorSelectorApp" ng-controller="authorsController">
+			<ul>
+				<li ng-repeat="author in authorsList">
+					<p>{{author.name}}</p>
+				</li>
+			</ul>
+		</div>
+		
 	</p>
 	<p>
 		<%= f.label :cover, "Cover photo"%><br />
