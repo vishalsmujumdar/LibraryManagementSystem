@@ -2,7 +2,6 @@
   	<%= javascript_include_tag "angular.js" %>
   	<%= javascript_include_tag "app.js" %>
   	<%= javascript_include_tag "controllers.js" %>
-  	
 <% end %>
 <h1>new boook</h1>
 
@@ -24,16 +23,18 @@
 		<%= f.text_field :category %>
 	</p>
 	<p>
-		<%= f.label :authors, "Authors" %><br />
-		
-		<div ng-app="AuthorSelectorApp" ng-controller="authorsController">
-			<ul>
-				<li ng-repeat="author in authorsList">
+		<!-- <div ng-app="AuthorSelectorApp" ng-controller="authorsController">
+			<input type="text" ng-model="nameFilter" placeholder="Search..."/>
+			<div ng-hide="nameFilter == null ">
+			<ul >
+				<li ng-repeat="author in authorsList | filter : nameFilter">
 					<p>{{author.name}}</p>
 				</li>
 			</ul>
-		</div>
-		
+			</div>
+		</div> -->
+		<%= f.label :authors, "Authors" %><br />
+		<%= f.text_field :authors %>
 	</p>
 	<p>
 		<%= f.label :cover, "Cover photo"%><br />

@@ -2,3 +2,13 @@
 
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf
+
+
+require 'paperclip/media_type_spoof_detector'
+module Paperclip
+  class MediaTypeSpoofDetector
+    def spoofed?
+      false
+    end
+  end
+end

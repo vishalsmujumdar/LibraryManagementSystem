@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Enriqueta:400,700' rel='stylesheet' type='text/css'>
   <link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
   <%= yield :head %>
 
   <style type="text/css">
@@ -19,7 +20,9 @@
 
 <header>
 	<div id="header-container">
-		<div id="site-title">Library Manager</div>
+		<div id="site-title">
+				<%= link_to "Library Manager", users_path %>
+		</div>
 		<div id="navigation">
 			<div class="nav-item">
 				<%= link_to "All Books", books_path %>
@@ -48,25 +51,12 @@
 	</div>
 </header>
 
-<div id="banner-container">
-	<div id="banner-inner-container">
-		<div id="banner"></div>
-		<div id="banner-main-group" class="">
-			<div id="banner-tagline" class="">
-				<h1>Welcome to the FIRM ODC Library Manager</h1>
-			</div>
-			<div id="banner-searchbar" class="">
-				<input type="text" id="searchBookData" class="search-input" placeholder="Search for your favorite book"></input>
-				<div id="bookSearchResults" class="book-search-results" style="visibility:hidden">
+<% if content_for?(:banner) %>
+  <%= yield(:banner) %>
+<% else %>
+  <div style="background: #fff;">default_content_here</div>
+<% end %>
 
-				</div>
-			</div>
-			<div id="banner-text" class="">
-				<span>Search for books and their availability. Manage books and book issues.</span>
-			</div>
-		</div>
-	</div>
-</div>
 
 <div id="main-container">
 	<div id="flash-message-container">

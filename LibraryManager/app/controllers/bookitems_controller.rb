@@ -2,6 +2,10 @@ class BookitemsController < ApplicationController
   before_filter :authenticate_user!
   load_and_authorize_resource
 
+  def index
+    @book = Book.find(params[:book_id])
+  end
+
   def new
   	@book = Book.find(params[:book_id])
   	@bookitem = Bookitem.new
@@ -15,7 +19,7 @@ class BookitemsController < ApplicationController
   	@bookitem.user_id = @user[:id]
 
   	if @bookitem.save
-  		@book.number_of_copies += 1
+  		@book.number_of_copies ? @book.number_of_copies += 1 :  @book.number_of_copies = 1
   		@book.save
   		redirect_to book_path(@book), :notice => "Book item saved successfully"
   	else

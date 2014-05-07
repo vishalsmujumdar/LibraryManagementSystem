@@ -3,11 +3,32 @@
 </h1>
 
 <% @books.each do |book| %>
-	<p>
-		<%= link_to book.title, book_path(book) %><%=  %><br />
-		<%= book.description %>
-	</p>
+	<div class="book">
+		<div class="bookcover">
+			<%= image_tag book.cover.url(:thumb) %>
+		</div>
+		<div class="booktitle">
+			<%= link_to "#{book.title}", book_path(book) %>
+		</div>
+		<div class="bookcategory">
+			<%= book.category %>
+		</div>
+		<div class="bookauthors">
+			<%= book.authors %>
+		</div>
 
+		<div class="book_buttons">
+			<div class="btn-book-edit">
+				<%= link_to "Edit Book", edit_book_path(book) %>
+			</div>
+			<div class="btn-book-issue">
+				<%= link_to "Issue Book", book_bookitems_path(book) %>
+			</div>
+		</div>
+
+
+
+	</div>
 <% end %>
 <% if can? :create, @book %>
 	<%= link_to "Add new book", new_book_path %>

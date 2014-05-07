@@ -5,10 +5,11 @@ class CreateBooks < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :category
-      t.references :author, index: true
+      t.string :authors
       t.integer :number_of_copies
       
       t.timestamps
     end
   end
 end
+`

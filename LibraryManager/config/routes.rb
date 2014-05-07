@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  get 'authors/ajaxsearchauthors'
+
   post 'users/ajaxsearchusers'
   post 'books/ajaxsearchbooks'
 

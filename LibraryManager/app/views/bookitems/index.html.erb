@@ -1,7 +1,4 @@
-<% content_for :head do %>
-  	<script type="text/javascript">
-    	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
-  	</script>
+<% content_for :head do%>
 	<style type="text/css">
 	.bookitem {
 		border: 1px solid;
@@ -19,37 +16,27 @@
 <% end %>
 
 <div id="page-wrapper">
-	<h2>Book</h2>
-	<%= link_to "Edit", edit_book_path(@book) %>
-	<p>
-		ISBN -<br />
-		<%= @book.isbn %>
-	</p>
-	<p>
-		Title<br />
-		<%= @book.title %>
-	</p>
-	<p>
-		<%= image_tag @book.cover.url(:medium) %>
-	</p>
-	<p>
-		Description<br />
-		<%= @book.description %>
-	</p>
-	<p>
-		Category<br />
-		<%= @book.category %>
-	</p>
-	<p>
-		Authors<br />
-		<%= @book.authors %>
-	</p> 
+	<div class="book">
+		<div class="bookcover">
+			<%= image_tag @book.cover.url(:thumb) %>
+		</div>
+		<div class="booktitle">
+			<%= link_to "#{@book.title}", book_path(@book) %>
+		</div>
+		<div class="bookcategory">
+			<%= @book.category %>
+		</div>
+		<div class="bookauthors">
+			<%= @book.authors %>
+		</div>
+	</div>
+
 
 	<h2>Book Items [<%= @book.number_of_copies %>]</h2>
 	<% if can? :create, @bookitem %>
 		<p class = "showUserSearch">
 			Add Book Item
-		</p>
+		</div>
 
 		<div id="user_select" style="display:none;">
 			Search User:
@@ -106,4 +93,3 @@
 		</div>
 	<% end %>
 </div>
-
