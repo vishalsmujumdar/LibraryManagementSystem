@@ -10,12 +10,9 @@ class BookissuesController < ApplicationController
 	def create
 		# create bookissue object => bookitem_id, user_id
 		@bookitem = Bookitem.find(params[:bookitem_id])
-
 		@bookissue = @bookitem.bookissues.new
-
 		@paramuser = params[:user];
   		@user = User.where(["employee_id = ?", @paramuser[:employee_id].to_i]).first
-
   		@bookissue.user_id = @user[:id]
 
   		# set dates for issue and return
@@ -37,10 +34,8 @@ class BookissuesController < ApplicationController
 
 	def update
 		@bookissue = Bookissue.find(params[:id])
-
 		# change status of bookissue to false => indication book is returned
 		@bookissue.status = false
-
 		# update bookitem availability to true
 		@bookitem = @bookissue.bookitem
 		@bookitem.update_attributes!(:availability => true)

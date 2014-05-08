@@ -4,24 +4,27 @@
 
 <% @books.each do |book| %>
 	<div class="book">
-		<div class="bookcover">
-			<%= image_tag book.cover.url(:thumb) %>
-		</div>
-		<div class="booktitle">
-			<%= link_to "#{book.title}", book_path(book) %>
-		</div>
-		<div class="bookcategory">
-			<%= book.category %>
-		</div>
-		<div class="bookauthors">
-			<%= book.authors %>
+		<div class="book-details">
+			<div class="bookcover">
+				<%= image_tag book.cover.url(:thumb) %>
+			</div>
+			<div class="booktitle">
+				<%= link_to "#{book.title}", book_path(book) %>
+			</div>
+			<div class="bookcategory">
+				<%= book.category %>
+			</div>
+			<div class="bookauthors">
+				<%= book.authors %>
+			</div>	
 		</div>
 
-		<div class="book_buttons">
-			<div class="btn-book-edit">
+
+		<div class="book-buttons">
+			<div class="btn-book">
 				<%= link_to "Edit Book", edit_book_path(book) %>
 			</div>
-			<div class="btn-book-issue">
+			<div class="btn-book">
 				<%= link_to "Issue Book", book_bookitems_path(book) %>
 			</div>
 		</div>

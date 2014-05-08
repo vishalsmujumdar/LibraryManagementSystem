@@ -15,6 +15,9 @@
 //= require_tree .
 
 $(document).ready(function(){
+	$('#default-banner #site-title').css("visibility","hidden");			
+	$('#default-banner #site-title').hide();
+
 	$('.showBookSearch').click(function(){
 		$('#book_select').slideToggle("fast");
 	});
@@ -47,6 +50,25 @@ $(document).ready(function(){
 			$('#bookSearchResults').css('visibility','hidden');
 		}
 	});
+
+	$(window).scroll(function(){
+		var top = $(window).scrollTop();
+		if(top >= 66)
+		{
+			$('.default-banner-wrapper').addClass('fixed');
+			$('#default-banner #site-title').css("visibility","visible");
+			$('#default-banner #site-title').show("slow");
+		}
+		else
+		{
+			$('.default-banner-wrapper').removeClass('fixed');	
+			$('#default-banner #site-title').css("visibility","hidden");			
+			$('#default-banner #site-title').hide("slow");
+		}
+
+		console.log(top);
+	});
+
 
 //	setTimeout(function(){
  // window.location.reload(1);

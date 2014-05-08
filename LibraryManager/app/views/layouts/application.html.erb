@@ -54,20 +54,33 @@
 <% if content_for?(:banner) %>
   <%= yield(:banner) %>
 <% else %>
-  <div style="background: #fff;">default_content_here</div>
+  <div class="default-banner-wrapper">
+  	<div id="default-banner">
+  		<div id="site-title" style="visibility:hidden">
+				<%= link_to "Library Manager", users_path %>
+		</div>
+  		<div id="banner-searchbar" class="">
+			<input type="text" id="searchBookData" class="search-input" placeholder="Search for your favorite book"></input>
+			<div id="bookSearchResults" class="book-search-results" style="visibility:hidden">
+			</div>
+		</div>
+  	</div>
+  </div>
 <% end %>
 
+<div id="main-wrapper">
+	<div id="main-container">
+		<div id="flash-message-container">
+			<% flash.each do |key,value| %>
+					<p><%= value %></p>
+			<% end %>
+		</div>
 
-<div id="main-container">
-	<div id="flash-message-container">
-		<% flash.each do |key,value| %>
-				<p><%= value %></p>
-		<% end %>
-	</div>
+		<%= yield %>
 
-	<%= yield %>
-
+	</div>	
 </div>
+
 <!-- <div id="footer-wrapper">
 	<div id="site-footer">
 		FIRM ODC

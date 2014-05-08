@@ -3,53 +3,44 @@
     	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
   	</script>
 	<style type="text/css">
-	.bookitem {
-		border: 1px solid;
-	}
-	.bookitem-row {
-		border: 1px solid;		
-	}
-	.row-label {
-		border: 1px solid;		
-	}
-	.row-value {
-		border: 1px solid;		
-	}
+	
+
 	</style>
 <% end %>
 
 <div id="page-wrapper">
-	<h2>Book</h2>
-	<%= link_to "Edit", edit_book_path(@book) %>
-	<p>
-		ISBN -<br />
-		<%= @book.isbn %>
-	</p>
-	<p>
-		Title<br />
-		<%= @book.title %>
-	</p>
-	<p>
-		<%= image_tag @book.cover.url(:medium) %>
-	</p>
-	<p>
-		Description<br />
-		<%= @book.description %>
-	</p>
-	<p>
-		Category<br />
-		<%= @book.category %>
-	</p>
-	<p>
-		Authors<br />
-		<%= @book.authors %>
-	</p> 
+	<div class="book">
+		<div class="bookcover">
+			<%= image_tag @book.cover.url(:medium) %>
+		</div>
+		<div class="booktitle">
+			<%= @book.title %>
+		</div>
+		<div class="book-details-row bottom-border">
+			<div class="bookcategory">
+				Genre :&nbsp;<span class="blue-text"><%= @book.category %></span>
+			</div>
+			<div class="bookauthors">
+				Authors :&nbsp;<span class="blue-text"><%= @book.authors %></span>
+			</div> 	
+			<div class="bookisbn">
+				ISBN -&nbsp;<span class="blue-text"><%= @book.isbn %></span>
+			</div>
+		</div>
+		<div class="book-details-row">
+			Description<br />
+			<%= @book.description %>
+		</div>
+		<div class="book-details-row">
+			<%= link_to "Edit", edit_book_path(@book), { :class => "submit-link"} %>
+		</div>
+	</div>
 
 	<h2>Book Items [<%= @book.number_of_copies %>]</h2>
 	<% if can? :create, @bookitem %>
-		<p class = "showUserSearch">
+		<div class = "showUserSearch">
 			Add Book Item
-		</p>
+		</div>
 
 		<div id="user_select" style="display:none;">
 			Search User:

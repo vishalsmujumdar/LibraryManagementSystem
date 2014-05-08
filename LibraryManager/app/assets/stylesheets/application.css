@@ -15,12 +15,12 @@
  */
 	
 body {
-	background: none repeat scroll 0% 0% #222;
+	background: #f9faf7;
 }
 header {
 	/*border: 1px solid;*/
 	background: none repeat scroll 0% 0% #4472B9;
-  margin: -10px 0px 0px -10px;
+  margin: -10px 0px 10px -10px;
   padding: 10px;
   color: #ffffff;
   width: 100%;
@@ -59,13 +59,59 @@ header a:visited{
   font-size: 22px;
   font-weight: bold;
 }
+.default-banner-wrapper {
+  width: 102%;
+  margin: -10px;
+  padding: 10px;
+  background: white;
+  overflow: hidden;
+  -webkit-box-shadow: 0px 1px 8px 1px;
+
+  -webkit-transition: background 1s; /* For Safari 3.1 to 6.0 */
+  transition: background 1s;
+}
+#default-banner {
+  width: 780px;
+  margin: 5px auto;
+  /*background: rgba(252,252,252,0.98);*/
+  padding: 0px;
+}
+#default-banner #banner-searchbar {
+  float: left;
+}
+#default-banner #bookSearchResults {
+
+}
+#default-banner #site-title{
+  float: left;
+  margin: 0px 106px 0px 0px;
+  font-family: 'Ubuntu', sans-serif;
+}
+#default-banner #site-title a,
+#default-banner #site-title a:link,
+#default-banner #site-title a:hover,
+#default-banner #site-title a:visited {
+  text-decoration: none;
+  color: #ffffff;
+}
+#default-banner {
+
+}
+.default-banner-wrapper.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  margin: 0px 0px 0px -8px;
+  background: #4472B9;
+  overflow: visible;
+}
 
 #banner-container {
 	width: 100%;
   height: 320px;
   position: relative;
   background-color: #000;
-  margin: 0px 0px 0px -8px;
+  margin: -10px 0px 0px -8px;
   padding: 0px 10px;
   color:#fff;
 }
@@ -124,7 +170,7 @@ header a:visited{
 
 .book-search-results {
   /*border: 1px solid;*/
-  position: relative;
+  position: absolute;
   margin: 0px 0px 0px 1px;
   text-shadow: none;
   width: 476px;
@@ -190,13 +236,30 @@ float: left;
 text-decoration: none;
 color: #000;
 }
+#page-wrapper .book:hover {
+  background: none;
+}
 
+#main-wrapper {
+  position: absolute;
+  width: 100%; 
+  margin: 0px auto;
+}
 #main-container {
 width: 800px;
-margin: 10px auto;
-border: 1px solid;
+margin: 20px auto;
+/* border: 1px solid; */
 background: #fff;
-
+overflow: hidden;
+webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+-webkit-box-shadow: 0 1px 2px 1px rgba(0,0,0,0.25);
+box-shadow: 0 1px 2px 1px rgba(0,0,0,0.25);
+background-color: #fff;
+-webkit-border-radius: 1px;
+border-radius: 1px;
+padding: 5px;
 }
 #main-container input {
   border: 1px solid #CCC;
@@ -204,7 +267,8 @@ background: #fff;
   padding: 0.5rem;
   width: 350px
 }
-#main-container input[type="submit"] {
+#main-container input[type="submit"],
+.submit-link {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
@@ -221,6 +285,48 @@ background: #fff;
 #main-container label {
 font-family: 'Noto Sans', sans-serif;
 }
+#main-container .book {
+  position: relative;
+}
+.book-details {
+  overflow: hidden;
+float: left;
+/* border: 1px solid; */
+width: 500px;
+}
+
+.book-buttons {
+  float: left;
+overflow: hidden;
+/* border: 1px solid; */
+width: 290px;
+}
+
+.btn-book {
+  color: #fff;
+  float: left;
+  border: 1px solid;
+  padding: 10px;
+  margin: 36px 10px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
+  background-color: #3072b3;
+  background-image: -moz-linear-gradient(#599bcd, #3072b3);
+  background-image: -webkit-linear-gradient(#599bcd, #3072b3);
+  background-image: linear-gradient(#599bcd, #3072b3);
+  background-repeat: repeat-x;
+  border-color: #2a65a0;
+  border-radius: 5px;
+  text-align: center;
+}
+.book .btn-book a,
+.book .btn-book a:link,
+.book .btn-book a:hover,
+.book .btn-book a:visited{
+  text-decoration: none;
+  color: #ffffff;
+} 
+
 
 #footer-wrapper {
 width: 800px;
