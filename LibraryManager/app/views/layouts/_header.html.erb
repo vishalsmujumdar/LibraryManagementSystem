@@ -1,0 +1,32 @@
+<header>
+	<div id="header-container">
+		<div id="site-title">
+				<%= link_to "Library Manager", users_path %>
+		</div>
+		<div id="navigation">
+			<div class="nav-item">
+				<%= link_to "All Books", books_path %>
+			</div>
+			<% if user_signed_in? %>
+				<div class="nav-item">
+					<%= link_to current_user.name, user_path(current_user) %>
+				</div>
+				<% if can? :create, @book %>
+					<div class="nav-item">
+						<%= link_to "Add a new book", new_book_path %>
+					</div>
+				<% end %>	
+				<div class="nav-item">
+					<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+				</div>
+			<% else %>
+				<div class="nav-item">
+					<%= link_to "Sign up", new_user_registration_path %>
+				</div>
+				<div class="nav-item">
+					<%= link_to "Sign in", new_user_session_path %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</header>

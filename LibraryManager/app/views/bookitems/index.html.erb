@@ -1,95 +1,17 @@
 <% content_for :head do%>
+	<%= javascript_include_tag "tooltips.js" %>
+	<script type="text/javascript">
+    	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
+  	</script>
 	<style type="text/css">
-	.bookitem {
-		border: 1px solid;
-	}
-	.bookitem-row {
-		border: 1px solid;		
-	}
-	.row-label {
-		border: 1px solid;		
-	}
-	.row-value {
-		border: 1px solid;		
-	}
+	
 	</style>
 <% end %>
 
 <div id="page-wrapper">
-	<div class="book">
-		<div class="bookcover">
-			<%= image_tag @book.cover.url(:thumb) %>
-		</div>
-		<div class="booktitle">
-			<%= link_to "#{@book.title}", book_path(@book) %>
-		</div>
-		<div class="bookcategory">
-			<%= @book.category %>
-		</div>
-		<div class="bookauthors">
-			<%= @book.authors %>
-		</div>
-	</div>
 
+	<%= render :partial => "shared/book" %>
 
-	<h2>Book Items [<%= @book.number_of_copies %>]</h2>
-	<% if can? :create, @bookitem %>
-		<p class = "showUserSearch">
-			Add Book Item
-		</div>
+	<%= render :partial => "shared/bookitems" %>
 
-		<div id="user_select" style="display:none;">
-			Search User:
-			<input style="width:150px;" id="searchData" type="text"></div>
-			<div id="searchResults" style="visibility:hidden"></div>
-		</div>
-	<% end %>
-	<% @book.bookitems.each do |item| %>
-		<div class="bookitem">
-			<% if item.availability %>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Availability:</strong></div>
-				    <div class="row-value"><%= "Available" %></div>
-				</div>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Owner:</strong></div>
-				    <div class="row-value"><%= link_to item.user.name, user_path(item.user) %></div>
-				</div>
-				<div class="bookitem-row">
-					<% if can? :create, @bookissue %>
-				  		<%= link_to "Issue this copy", new_book_bookitem_bookissue_path(@book,item.id) %>
-				  	<% end %>
-				</div>
-			<% else %>
-				<% latestbookissue = item.bookissues.last %>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Availability:</strong></div>
-				    <div class="row-value"><%= "Issued" %></div>
-				</div>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Owner:</strong></div>
-				    <div class="row-value"><%= link_to item.user.name, user_path(item.user) %></div>
-				</div>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Issued By:</strong></div>
-				    <div class="row-value"><%= link_to  latestbookissue.user.name, user_path(latestbookissue.user) %></div>
-				</div>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Date of Issue:</strong></div>
-				    <div class="row-value"><%= latestbookissue.date_of_issue.to_date %></div>
-				</div>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Date of Return:</strong></div>
-				    <div class="row-value"><%= latestbookissue.date_of_return.to_date %></div>
-				</div>
-				<div class="bookitem-row">
-					<% if can? :update, @bookissue %>
-				  		<%= link_to "Return this copy", book_bookitem_bookissue_path(@book,item,latestbookissue.id), method: :patch %>
-				  	<% end %>
-				</div>
-			<% end %>
-			<%= link_to "View book item", book_bookitem_path(@book,item) %>
-		  	<hr />
-		</div>
-	<% end %>
 </div>

@@ -1,0 +1,61 @@
+<h2>Book Items [<%= @book.number_of_copies %>]</h2>
+	<% if can? :create, @bookitem %>
+		<div class = "showUserSearch">
+			Add Book Item
+		</div>
+
+		<div id="user_select" style="display:none;">
+			Search User:
+			<input style="width:150px;" id="searchData" type="text"></div>
+			<div id="searchResults" style="visibility:hidden"></div>
+		</div>
+	<% end %>
+	<% @book.bookitems.each_with_index { |item, index| %>
+		<div class="bookitem">
+			<div class="serial-number" title = "<%= item.user.name %>">
+			<%= link_to (index + 1), book_bookitem_path(@book,item) %>
+			</div>
+			<% if item.availability %>
+				<div class="bookitem-row">
+				    <div class="row-label"><strong>Status:</strong></div>
+				    <div class="row-value"><%= "Available" %></div>
+				</div>
+				<!-- <div class="bookitem-row">
+				    <div class="row-label"><strong>Owner:</strong></div>
+				    <div class="row-value"><%= link_to item.user.name, user_path(item.user) %></div>
+				</div> -->
+				<div class="bookitem-row last">
+					<% if can? :create, @bookissue %>
+				  		<%= link_to "Issue this copy", new_book_bookitem_bookissue_path(@book,item.id), :class => "submit-link" %>
+				  	<% end %>
+				</div>
+			<% else %>
+				<% latestbookissue = item.bookissues.last %>
+				<!-- <div class="bookitem-row">
+				    <div class="row-label"><strong>Availability:</strong></div>
+				    <div class="row-value"><%= "Issued" %></div>
+				</div> -->
+				<!-- <div class="bookitem-row">
+				    <div class="row-label"><strong>Owner:</strong></div>
+				    <div class="row-value"><%= link_to item.user.name, user_path(item.user) %></div>
+				</div> -->
+				<div class="bookitem-row">
+				    <div class="row-label"><strong>Issued By:</strong></div>
+				    <div class="row-value"><%= link_to  latestbookissue.user.name, user_path(latestbookissue.user) %></div>
+				</div>
+				<div class="bookitem-row">
+				    <div class="row-label"><strong>Date of Issue:</strong></div>
+				    <div class="row-value"><%= latestbookissue.date_of_issue.to_date %></div>
+				</div>
+				<div class="bookitem-row">
+				    <div class="row-label"><strong>Date of Return:</strong></div>
+				    <div class="row-value"><%= latestbookissue.date_of_return.to_date %></div>
+				</div>
+				<div class="bookitem-row last">
+					<% if can? :update, @bookissue %>
+				  		<%= link_to "Return this copy", book_bookitem_bookissue_path(@book,item,latestbookissue.id), method: :patch, :class => "submit-link" %>
+				  	<% end %>
+				</div>
+			<% end %>
+		</div>
+	<% } %>

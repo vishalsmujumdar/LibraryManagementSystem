@@ -40,6 +40,8 @@ class BookissuesController < ApplicationController
 		@bookitem = @bookissue.bookitem
 		@bookitem.update_attributes!(:availability => true)
 
+		@bookissue.date_of_actual_return = Date.today
+
 		if @bookissue.save
 			redirect_to book_path(@bookissue.bookitem.book), :notice => "Book returned"
 		else

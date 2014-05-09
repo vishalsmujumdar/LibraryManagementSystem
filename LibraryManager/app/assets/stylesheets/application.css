@@ -16,6 +16,7 @@
 	
 body {
 	background: #f9faf7;
+  font-family: 'Noto Sans', sans-serif;
 }
 header {
 	/*border: 1px solid;*/
@@ -30,9 +31,32 @@ header {
 header a,
 header a:link,
 header a:hover,
-header a:visited{
+header a:visited,
+a.submit-link ,
+a.submit-link :link,
+a.submit-link :hover,
+a.submit-link :visited,
+#default-banner #site-title a,
+#default-banner #site-title a:link,
+#default-banner #site-title a:hover,
+#default-banner #site-title a:visited,
+.book .btn-book a,
+.book .btn-book a:link,
+.book .btn-book a:hover,
+.book .btn-book a:visited{
 	text-decoration: none;
 	color: #ffffff;
+}
+.book a,
+.book a:link,
+.book a:hover,
+.book a:visited,
+#page-wrapper .book  a,
+#page-wrapper .book .booktitle a:link,
+#page-wrapper .book .booktitle a:hover,
+#page-wrapper .book .booktitle a:visited {
+  text-decoration: none;
+  color: #000000; 
 }
 #header-container {
   width:800px;
@@ -86,13 +110,6 @@ header a:visited{
   float: left;
   margin: 0px 106px 0px 0px;
   font-family: 'Ubuntu', sans-serif;
-}
-#default-banner #site-title a,
-#default-banner #site-title a:link,
-#default-banner #site-title a:hover,
-#default-banner #site-title a:visited {
-  text-decoration: none;
-  color: #ffffff;
 }
 #default-banner {
 
@@ -229,13 +246,6 @@ font-style: italic;
 font-size: 14px;
 float: left;
 }
-.book a,
-.book a:link,
-.book a:hover,
-.book a:visited{
-text-decoration: none;
-color: #000;
-}
 #page-wrapper .book:hover {
   background: none;
 }
@@ -267,6 +277,20 @@ padding: 5px;
   padding: 0.5rem;
   width: 350px
 }
+#main-container input[type=text], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+}
+ 
+#main-container input[type=text]:focus, textarea:focus {
+  box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  border: 1px solid rgba(81, 203, 238, 1);
+}
+
 #main-container input[type="submit"],
 .submit-link {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
@@ -282,24 +306,30 @@ padding: 5px;
   border-radius: 5px;
   padding: 10px;
 }
+
 #main-container label {
 font-family: 'Noto Sans', sans-serif;
 }
 #main-container .book {
   position: relative;
 }
+
+.page-wrapper {
+
+}
+
 .book-details {
   overflow: hidden;
-float: left;
-/* border: 1px solid; */
-width: 500px;
+  float: left;
+  /* border: 1px solid; */
+  width: 500px;
 }
 
 .book-buttons {
   float: left;
-overflow: hidden;
-/* border: 1px solid; */
-width: 290px;
+  overflow: hidden;
+  /* border: 1px solid; */
+  width: 290px;
 }
 
 .btn-book {
@@ -319,15 +349,6 @@ width: 290px;
   border-radius: 5px;
   text-align: center;
 }
-.book .btn-book a,
-.book .btn-book a:link,
-.book .btn-book a:hover,
-.book .btn-book a:visited{
-  text-decoration: none;
-  color: #ffffff;
-} 
-
-
 #footer-wrapper {
 width: 800px;
 margin: 0px auto;
@@ -345,5 +366,143 @@ width: 800px;
 text-align: center;
 color: #fff;
 }
+
+.serial-number {
+  float: left;
+  display: inline-block;
+  background: #fff;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  vertical-align: middle;
+  font-size: 17px;
+  border: 1px solid #dddfe2;
+  border-radius: 50%;
+  text-align: center;
+  margin: 15px 10px;
+}
+
+.bookitem {
+  margin: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 0px 0px 10px 2px #ccc;
+  padding: 10px;
+  overflow: hidden;
+}
+.bookitem-row {
+  /* border: 1px solid; */    
+  float: left;
+  padding: 10px 0px;
+  margin: 0px 10px 0px 10px;
+}
+.bookitem-row.last {
+  margin: 10px 10px;
+}
+.row-label {
+  /* border: 1px solid; */    
+}
+.row-value {
+  /* border: 1px solid; */    
+}
+
+#page-wrapper .book .bookcover {
+
+}
+#page-wrapper .book .booktitle {
+  width: 564px;
+  padding: 0px 0px 2px 5px;
+  font-size: 25px;
+}
+#page-wrapper .book .book-details-row {
+  float: left;
+  overflow: hidden;
+  width: 564px;
+  padding: 10px 0px;
+}
+#page-wrapper .book .book-details-row.bottom-border {
+  border-bottom: 1px solid #ccc;
+} 
+#page-wrapper .book .book-details-row div {
+  width: 564px;
+  font-size: 18px;
+  padding: 3px 0px 3px 5px;
+}
+#page-wrapper .book .bookisbn {
+
+}
+#page-wrapper .book .bookdescription {
+
+}
+#page-wrapper .book a,
+#page-wrapper .book a:link,
+#page-wrapper .book a:hover,
+#page-wrapper .book a:visited{
+  text-decoration: none;
+  color: #ffffff;
+} 
+.blue-text {
+  color: #136cb2;
+}
+.tooltip, .arrow:after {
+  background: black;
+  border: 2px solid white;
+}
+
+.tooltip {
+  pointer-events: none;
+  opacity: 0;
+  display: inline-block;
+  position: absolute;
+  padding: 10px 20px;
+  color: white;
+  border-radius: 20px;
+  margin-top: 20px;
+  text-align: center;
+  font: bold 14px "Helvetica Neue", Sans-Serif;
+  font-stretch: condensed;
+  text-decoration: none;
+  text-transform: uppercase;
+  box-shadow: 0 0 7px black;
+}
+.arrow {
+  width: 70px;
+  height: 16px;
+  overflow: hidden;
+  position: absolute;
+  left: 50%;
+  margin-left: -35px;
+  bottom: -16px;
+}
+.arrow:after {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: -20px;
+  width: 25px;
+  height: 25px;
+  -webkit-box-shadow: 6px 5px 9px -9px black,
+                      5px 6px 9px -9px black;
+  -moz-box-shadow: 6px 5px 9px -9px black,
+                   5px 6px 9px -9px black;
+  box-shadow: 6px 5px 9px -9px black,
+              5px 6px 9px -9px black;
+  -webkit-transform: rotate(45deg);
+  -moz-transform:    rotate(45deg);
+  -ms-transform:     rotate(45deg);
+  -o-transform:      rotate(45deg);
+}
+.tooltip.active {
+  opacity: 1;
+  margin-top: 5px;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition:    all 0.2s ease;
+  -ms-transition:     all 0.2s ease;
+  -o-transition:      all 0.2s ease;
+}
+.tooltip.out {
+  opacity: 0;
+  margin-top: -20px;
+}
+
 
 

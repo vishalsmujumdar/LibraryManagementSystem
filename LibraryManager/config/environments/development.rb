@@ -27,10 +27,7 @@ Rails.application.configure do
   # number of complex assets.
   config.assets.debug = true
 
-  Rails.application.config.assets.precompile += %w( app.js )
-  Rails.application.config.assets.precompile += %w( controllers.js )
-  Rails.application.config.assets.precompile += %w( angular.js )
-
+  
   # Adds additional error checking when serving assets at runtime.
   # Checks for improperly declared sprockets dependencies.
   # Raises helpful error messages.
