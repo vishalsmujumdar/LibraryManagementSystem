@@ -1,6 +1,26 @@
 $(function() {
   	$('.showUserSearch').click(function() {
-      	$('#user_select').slideToggle("fast");
+      	$('.modal-backdrop.fade').css("visibility","visible");
+      	$('.modal-backdrop.fade').addClass('in');
+
+      	if ( $( ".modal" ).is( ":hidden" ) ) {
+		    $( ".modal" ).slideDown( "slow" );
+		}
+		else {
+		    $( ".modal" ).hide();
+		}
+
+
+      	//$('#user_select').slideToggle("fast");
+	});
+	$('.modal-close').click(function(){
+		$('.modal input').val('');
+		$('#searchResults').empty();
+		$('#searchResults').css('visibility','hidden');
+		$('.modal-backdrop.fade').css("visibility","hidden");
+      	$('.modal-backdrop.fade').removeClass('in');
+      	$('.modal').hide();
+
 	});
 
     $('#searchData').keyup(function(){

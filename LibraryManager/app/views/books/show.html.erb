@@ -8,7 +8,22 @@
 
 	</style>
 <% end %>
-
+<div class="modal-backdrop fade" style="visibility:hidden">	
+</div>
+<div class="modal" style="display:none;">
+	<div class="modal-header">
+		<div class="modal-header-text">
+			Add Book Item
+		</div>
+		<div class="modal-close"></div>
+	</div>
+	<div class="modal-body">
+		<div class="modal-row first">
+			Enter search term: &nbsp;&nbsp;<input id="searchData" type="text" placeholder="Search User...">
+		</div>
+		<div id="searchResults" style="visibility:hidden"></div>
+	</div>
+</div>
 <div id="page-wrapper">
 
 	<%= render :partial => "shared/book" %>

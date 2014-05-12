@@ -8,14 +8,14 @@
 				<%= link_to "All Books", books_path %>
 			</div>
 			<% if user_signed_in? %>
-				<div class="nav-item">
-					<%= link_to current_user.name, user_path(current_user) %>
-				</div>
 				<% if can? :create, @book %>
 					<div class="nav-item">
 						<%= link_to "Add a new book", new_book_path %>
 					</div>
 				<% end %>	
+				<div class="nav-item">
+					<%= link_to current_user.name, user_path(current_user) %>
+				</div>
 				<div class="nav-item">
 					<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 				</div>

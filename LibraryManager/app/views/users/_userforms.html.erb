@@ -1,18 +1,45 @@
+<% content_for :head do %>
+  	<%= javascript_include_tag "tooltips.js" %>
+  	<script type="text/javascript">
+    	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
+  	</script>
+	<style type="text/css">
+		
+	</style>
+<% end %>
+
 <% @users.each do |user| %>
 	<% form_id = "#{user.employee_id}" %>
 
 	<div class="user">
-		<p>
-			<%= form_for user, url: @path, method: :post do |f| %>
-				<%= f.label :name, user.name %>
-				&nbsp&nbsp
-				<%= f.label :employee_id, user.employee_id %>
-				<br />
-				<%= f.label :email, user.email %>
-				<%= f.hidden_field :employee_id, value: user.employee_id %>
-				<%= f.submit "Select", :id => form_id, :class => "usersubmit" %>
-			<% end %>
-		</p>
-		<hr>
+		<div class="avatar"></div>
+		<%= form_for user, url: @path, method: :post do |f| %>
+			<div class="row">
+				<div class="row-left">
+					<div class="row-left-top">
+						<div class="name">
+							 <%= f.label :name, user.name %>
+						</div>
+						<div class="empid">
+							 <%= f.label :employee_id, user.employee_id %>
+						</div>
+					</div>
+					<div class="row-left-bottom">
+						<div class="email">
+							 <%= f.label :email, user.email %>
+						</div>
+					</div>
+				</div>
+				<div class="row-right">
+					<div>
+					 <%= f.hidden_field :employee_id, value: user.employee_id %>
+					</div>
+					<div class="row-btn">
+						 <%= f.submit "Select", :id => form_id, :class => "usersubmit" %>
+					</div>
+				</div>	
+			</div>
+		<% end %>
+		
 	</div>
 <% end %>

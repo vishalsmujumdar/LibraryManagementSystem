@@ -89,7 +89,7 @@ a.submit-link :visited,
   padding: 10px;
   background: white;
   overflow: hidden;
-  -webkit-box-shadow: 0px 1px 8px 1px;
+  -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
 
   -webkit-transition: background 1s; /* For Safari 3.1 to 6.0 */
   transition: background 1s;
@@ -504,5 +504,135 @@ color: #fff;
   margin-top: -20px;
 }
 
+.is-false {
+  width: 31px;
+  height: 31px;
+  background-image: url("/assets/false.png");
+  -webkit-background-size: 31px 31px;
+  background-size: 31px 31px;
+  background-repeat: no-repeat;     
+}
+.is-true {
+  width: 31px;
+  height: 31px;
+  background-image: url("/assets/true.png");
+  -webkit-background-size: 31px 31px;
+  background-size: 31px 31px;
+  background-repeat: no-repeat;
+}
 
+.modal-backdrop {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1040;
+      background-color: #000000;
+    } 
+    .fade {
+      -webkit-transition: opacity 0.15s linear;
+      -moz-transition: opacity 0.15s linear;
+      -ms-transition: opacity 0.15s linear;
+      -o-transition: opacity 0.15s linear;
+      transition: opacity 0.15s linear;
+      opacity: 0;
+    }
+    .in {
+      opacity: 0.8;
+    }
+    .modal {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      z-index: 1050;
+      overflow: auto;
+      width: 550px;
+      margin: -0px 0 0 -280px;
+      background-color: #ffffff;
+      /*border: 1px solid #999;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;*/
+      -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    .modal-header {
+      padding: 10px;
+      width: 96.5%;
+      background: #4472B9;
+      color: #ffffff;
+      overflow: hidden;
+    }
+    .modal-header-text {
+      float: left;
+    }
+    .modal-close {
+      float: right;
+      height: 20px;
+      width: 20px;
+      background: url('/assets/close-1.png');
+      background-size: 20px;
+      cursor: pointer;
+    }
+    .modal-body {
+    }
+    .modal-row {
+      padding: 10px;
+    }
 
+    .user {
+      border-bottom: 1px solid #ccc;
+      padding: 5px;
+    }
+    .avatar {
+      background: url('/assets/avatar.png');
+      float: left;
+      height: 70px;
+      width: 70px;
+      background-size: 70px;
+    }
+    .row {
+      padding: 5px
+    }
+    .row-left,
+    .name,
+    .email,
+    .row-btn {
+      float: left;
+    }
+    .empid {
+      float: right;
+    }
+    .row-left-top {
+      border-bottom: 2px solid #ccc;
+    }
+    .row-left-top,
+    .row-left-bottom {
+      margin: 0px 0px 3px 2px;
+    }
+    .user,
+    .row,
+    .row-left,
+    .row-left-top,
+    .row-right,
+    .user,
+    .row-left-bottom {
+      overflow: hidden;
+    }
+    .row-left {
+        margin: 0px 10px 0px 0px;
+        width: 320px;
+    }
+    .name,
+    .empid {
+      margin: 0px 10px 0px 0px;
+    }
+    .row-right {
+      padding: 15px 0px 0px 15px;     
+    }
