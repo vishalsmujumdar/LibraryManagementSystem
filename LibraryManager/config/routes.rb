@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users
 
   resources :books do
+    collection { post :import }
     resources :bookitems do
       resources :bookissues
     end

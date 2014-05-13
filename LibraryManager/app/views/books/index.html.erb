@@ -1,3 +1,8 @@
+<h2>Import Books from CSV / Excel file</h2>
+<%= form_tag import_books_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>
 <h1>
 	All Books
 </h1>

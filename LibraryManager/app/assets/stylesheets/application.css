@@ -257,6 +257,7 @@ float: left;
 }
 #main-container {
 width: 800px;
+min-height: 500px;
 margin: 20px auto;
 /* border: 1px solid; */
 background: #fff;
@@ -547,7 +548,7 @@ color: #fff;
       left: 50%;
       z-index: 1050;
       overflow: auto;
-      width: 550px;
+      width: 560px;
       margin: -0px 0 0 -280px;
       background-color: #ffffff;
       /*border: 1px solid #999;
@@ -635,4 +636,21 @@ color: #fff;
     }
     .row-right {
       padding: 15px 0px 0px 15px;     
+    }
+
+
+    .container-2 {
+      margin: 5px;
+      overflow: hidden;
+    }
+    .item-wrapper {
+      float: left;
+      margin: 10px 20px;
+      box-shadow: 0px 1px 4px rgba(0,0,0,0.8);
+      padding: 10px 10px 6px 10px;
+      cursor: pointer;
+      max-width: 130px;
+    }
+    .bottom-cover {
+      border: 1px solid;  
     }

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+var previousPageURL = document.referrer;
 
 $(document).ready(function(){
 	$('#default-banner #site-title').css("visibility","hidden");			
@@ -22,43 +23,55 @@ $(document).ready(function(){
 		$('#book_select').slideToggle("fast");
 	});
 
-	$('#searchBookData').keyup(function(){
+	$('#searchBookData').keyup(function(event){
 		var searchTerm = $(this).val();
 		
-		if(searchTerm !== '') {
-			var url = '/books/ajaxsearchbooks';
-			var searchdata = { 'searchterm' : searchTerm };
-			console.log(url);
-			console.log(searchdata);
-			
-			$.ajax({
-				url: url,
-				type: "POST",
-				dataType:'html',
-				data: searchdata,
-				success: function(data){
-					console.log(data);
-					$('#bookSearchResults').css('visibility','visible');
-					$('#bookSearchResults').empty();
-					$('#bookSearchResults').append(data);
-				}
-			});
-		}
-		else
+		if(event.keyCode != 27)
 		{
-			$('#bookSearchResults').empty();
-			$('#bookSearchResults').css('visibility','hidden');
+			if(searchTerm !== '') {
+				var url = '/books/ajaxsearchbooks';
+				var searchdata = { 'searchterm' : searchTerm };
+				
+				$.ajax({
+					url: url,
+					type: "POST",
+					dataType:'html',
+					data: searchdata,
+					success: function(data){
+						$('#bookSearchResults').css('visibility','visible');
+						$('#bookSearchResults').empty();
+						$('#bookSearchResults').append(data);
+					}
+				});
+			}
+			else
+			{
+				$('#bookSearchResults').empty();
+				$('#bookSearchResults').css('visibility','hidden');
+			}
 		}
 	});
 
 	
 
 	$("#main-container .serial-number[title]").tooltips();
+	$("#main-container .item-wrapper[title]").tooltips();
 
 //	setTimeout(function(){
  // window.location.reload(1);
 //}, 5000);
 
+});
+
+$(window).keyup(function(event){
+	if(event.keyCode == 27)
+	{
+		if(!$('#bookSearchResults').is('hidden'))
+		{
+			$('#bookSearchResults').empty();
+			$('#bookSearchResults').css('visibility','hidden');
+		}
+	}
 });
 
 $(window).scroll(function(){

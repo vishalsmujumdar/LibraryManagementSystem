@@ -38,6 +38,13 @@ gem 'paperclip', '~> 4.1.1'
 #TZInfo provides daylight savings aware transformations between times in different time zones.
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
+gem 'rubyzip', '< 1.0.0'
+
+#Roo can access the contents of various spreadsheet files. It can handle * OpenOffice * Excel * Google spreadsheets * Excelx * LibreOffice * CSV
+gem 'roo', '~> 1.10.1'
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -1,4 +1,5 @@
 $(function() {
+
   	$('.showUserSearch').click(function() {
       	$('.modal-backdrop.fade').css("visibility","visible");
       	$('.modal-backdrop.fade').addClass('in');
@@ -54,4 +55,8 @@ $(function() {
 		}
 	});
 
+    if(previousPageURL.indexOf('/books/new') > -1)
+    {
+		$('.showUserSearch').trigger('click');    	
+    }
 });

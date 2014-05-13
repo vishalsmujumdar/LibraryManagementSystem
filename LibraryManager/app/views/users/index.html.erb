@@ -42,3 +42,24 @@
 		</div>
 	</div>
 <% end %>
+
+<div id="page-wrapper">
+	<div class="container-2">
+		<% if user_signed_in? %>
+			<% @user.bookissues.each do |bookissue| %>
+				<% if bookissue.status %>
+					<% bookitem = bookissue.bookitem %>
+					<div class="item-wrapper">
+						<%= link_to (image_tag bookitem.book.cover.url(:small)), book_bookitem_path(bookitem.book,bookitem) %>
+					</div>
+				<% end %>
+			<% end %>
+		<% else %>
+			<% @books.each do |book| %>
+					<div class="item-wrapper" title="<% book.title %>">
+						<%= link_to (image_tag book.cover.url(:small)), book_path(book) %>
+					</div>
+			<% end %>
+		<% end %>
+	</div>
+</div>
