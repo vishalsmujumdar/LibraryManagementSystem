@@ -90,7 +90,8 @@ a.submit-link :visited,
   background: white;
   overflow: hidden;
   -webkit-box-shadow: 0px 2px 4px rgba(0,0,0,0.5);
-
+  -moz-box-shadow:  0px 2px 4px rgba(0,0,0,0.5);
+  box-shadow:  0px 2px 4px rgba(0,0,0,0.5);
   -webkit-transition: background 1s; /* For Safari 3.1 to 6.0 */
   transition: background 1s;
 }
@@ -139,6 +140,9 @@ a.submit-link :visited,
 #banner {
   /*border: 1px solid;*/
   box-shadow: 50px 0px 120px -20px #000 inset, 50px 0px 120px -40px #000 inset, -50px 0px 120px -20px #000 inset, -50px 0px 120px -40px #000 inset, 0px 10px 10px -10px #000 inset, 0px -10px 10px -10px #000 inset;
+  -moz-box-shadow: 50px 0px 120px -20px #000 inset, 50px 0px 120px -40px #000 inset, -50px 0px 120px -20px #000 inset, -50px 0px 120px -40px #000 inset, 0px 10px 10px -10px #000 inset, 0px -10px 10px -10px #000 inset;
+  -webkit-box-shadow: 50px 0px 120px -20px #000 inset, 50px 0px 120px -40px #000 inset, -50px 0px 120px -20px #000 inset, -50px 0px 120px -40px #000 inset, 0px 10px 10px -10px #000 inset, 0px -10px 10px -10px #000 inset;
+
   max-height: 320px;
   background: white;
   height: 320px;
@@ -174,6 +178,8 @@ a.submit-link :visited,
   width: 470px;
   height: 22px;
   box-shadow: 0px 0px 0px 1px #555 inset, 0px 0px 0px 6px rgba(255, 255, 255, 0.5), 0px 0px 4px 6px rgba(0, 0, 0, 0.25);
+  -moz-box-shadow: 0px 0px 0px 1px #555 inset, 0px 0px 0px 6px rgba(255, 255, 255, 0.5), 0px 0px 4px 6px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 0px 0px 1px #555 inset, 0px 0px 0px 6px rgba(255, 255, 255, 0.5), 0px 0px 4px 6px rgba(0, 0, 0, 0.25);
   background: white url('search-icon-md.png') no-repeat;
   background-size: 25px;
   background-position: 460px 4px;
@@ -266,15 +272,19 @@ webkit-box-sizing: border-box;
 -moz-box-sizing: border-box;
 box-sizing: border-box;
 -webkit-box-shadow: 0 1px 2px 1px rgba(0,0,0,0.25);
+-moz-box-shadow: 0 1px 2px 1px rgba(0,0,0,0.25);
 box-shadow: 0 1px 2px 1px rgba(0,0,0,0.25);
 background-color: #fff;
 -webkit-border-radius: 1px;
+-moz-border-radius: 1px;
 border-radius: 1px;
 padding: 5px;
 }
 #main-container input {
   border: 1px solid #CCC;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) inset;
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) inset;
+  -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2) inset;
   padding: 0.5rem;
   width: 350px
 }
@@ -289,12 +299,16 @@ padding: 5px;
  
 #main-container input[type=text]:focus, textarea:focus {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  -webkit-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
+  -moz-box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
 }
 
 #main-container input[type="submit"],
 .submit-link {
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
   background-color: #3072b3;
@@ -340,6 +354,8 @@ font-family: 'Noto Sans', sans-serif;
   padding: 10px;
   margin: 36px 10px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.5);
   text-shadow: 0 -1px 0 rgba(0,0,0,0.25);
   background-color: #3072b3;
   background-image: -moz-linear-gradient(#599bcd, #3072b3);
@@ -387,6 +403,8 @@ color: #fff;
   margin: 10px;
   border: 1px solid #ccc;
   box-shadow: 0px 0px 10px 2px #ccc;
+  -webkit-box-shadow: 0px 0px 10px 2px #ccc;
+  -moz-box-shadow: 0px 0px 10px 2px #ccc;
   padding: 10px;
   overflow: hidden;
 }
@@ -464,6 +482,8 @@ color: #fff;
   text-decoration: none;
   text-transform: uppercase;
   box-shadow: 0 0 7px black;
+  -webkit-box-shadow: 0 0 7px black;
+  -moz-box-shadow: 0 0 7px black;
 }
 .arrow {
   width: 70px;
@@ -647,6 +667,8 @@ color: #fff;
       float: left;
       margin: 10px 20px;
       box-shadow: 0px 1px 4px rgba(0,0,0,0.8);
+      -moz-box-shadow: 0px 1px 4px rgba(0,0,0,0.8);
+      -webkit-box-shadow: 0px 1px 4px rgba(0,0,0,0.8);
       padding: 10px 10px 6px 10px;
       cursor: pointer;
       max-width: 130px;
