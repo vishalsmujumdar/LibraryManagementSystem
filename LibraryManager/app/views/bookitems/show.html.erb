@@ -8,6 +8,23 @@
 	</style>
 <% end %>
 
+<div class="modal-backdrop fade" style="visibility:hidden">	
+</div>
+<div class="modal" style="display:none;">
+	<div class="modal-header">
+		<div class="modal-header-text">
+			Issue Book Copy
+		</div>
+		<div class="modal-close"></div>
+	</div>
+	<div class="modal-body">
+		<div class="modal-row first">
+			Enter search term: &nbsp;&nbsp;<input id="searchData" type="text" placeholder="Search User...">
+		</div>
+		<div id="searchResults" style="visibility:hidden"></div>
+	</div>
+</div>
+
 <div id="page-wrapper">
 	<div class="book">
 		<div class="bookcover">
@@ -33,7 +50,24 @@
 		</div>
 	</div>
 
-	<h2>Book Item Issue History</h2>
+	<div class="menu">
+		<% if can? :update, @bookitem %>
+			<div class="menu-item">
+				<div class = "submit-link showUserSearch">
+					Issue this copy
+				</div>			
+			</div>
+		<% end %>
+		<% if can? :destroy, @book %>
+			<div class="menu-item">
+				<div class = "submit-link">
+					<%= link_to "Delete Copy", edit_book_path(@book), { :class => "submit-link"} %>
+				</div>
+			</div>
+		<% end %>	
+	</div>
+
+	<div class="title">Book Copy Issue History</div>
 	<% @bookitem.bookissues.each_with_index { |bookissue, index| %>
 		<div class="bookitem">
 			<% if bookissue.status %>

@@ -5,7 +5,6 @@
   	</script>
 	<style type="text/css">
 		
-
 	</style>
 <% end %>
 <div class="modal-backdrop fade" style="visibility:hidden">	
@@ -18,15 +17,93 @@
 		<div class="modal-close"></div>
 	</div>
 	<div class="modal-body">
-		<div class="modal-row first">
-			Enter search term: &nbsp;&nbsp;<input id="searchData" type="text" placeholder="Search User...">
-		</div>
-		<div id="searchResults" style="visibility:hidden"></div>
+		<div class="tabs-container">  
+            <ul class="tabs-list">
+                <li class="tab"><a href="#tab1">Search User</a></li>
+                <li class="tab"><a href="#tab2">New User</a></li>
+            </ul>
+            
+            <div class="tabs-contents">
+                <div id="tab1" class="content-item">
+             		<div class="modal-row">
+						<div class="label">
+                			Enter search term:
+                		</div>
+                		<div class="input-container">
+                			<input id="searchData" type="text" placeholder="Search User...">
+                		</div>
+					</div>
+					<div id="searchResults" style="visibility:hidden"></div>
+				</div>
+                <div id="tab2" class="content-item">
+                	<%= form_for User.new, :url => book_bookitems_path(@book) do |form| %>
+                		<%= hidden_field_tag :w_user, true %>
+	                	<div class="modal-row">
+	                		<div class="label">
+	                			<%= form.label :name, "Name" %>
+	                		</div>
+	                		<div class="input-container">
+	                			
+	                			<%= form.text_field :name, autofocus: true, :placeholder => "Name..." %>
+	                		</div>						
+						</div>
+						<div class="modal-row">
+							<div class="label">
+	                			<%= form.label :employee_id, "Employee Id" %>
+	                		</div>
+	                		<div class="input-container">
+	                			
+	                			<%= form.text_field :employee_id, autofocus: true, :placeholder => "Employee Id..." %>
+	                		</div>
+	                		
+						</div>
+						<div class="modal-row">
+							<div class="label">
+	                			<%= form.label :email, "Email Address" %>
+	                		</div>
+	                		<div class="input-container">
+	                			
+	                			<%= form.email_field :email, autofocus: true, :placeholder => "Email..." %>
+	                		</div>
+	                		 
+						</div>
+						<div class="modal-row">
+							<div class="label">
+	                		</div>
+	                		<div class="input-container">
+	                			
+	                			<%= form.submit "Submit" %>
+	                		</div>
+						</div>
+					<% end %>
+                </div>
+                
+            </div>
+            
+        </div>
+
 	</div>
 </div>
 <div id="page-wrapper">
 
 	<%= render :partial => "shared/book" %>
+
+	<div class="menu">
+		<% if can? :create, @bookitem %>
+			<div class="menu-item">
+				<div class = "submit-link showUserSearch">
+					Add Book Item
+				</div>			
+			</div>
+		<% end %>
+		<% if can? :update, @book %>
+			<div class="menu-item">
+				<div class = "submit-link">
+					<%= link_to "Edit Book", edit_book_path(@book), { :class => "submit-link"} %>
+				</div>
+			</div>
+		<% end %>	
+	</div>
 
 	<%= render :partial => "shared/bookitems" %>
 

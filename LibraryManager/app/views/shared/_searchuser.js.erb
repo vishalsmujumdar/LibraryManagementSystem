@@ -5,6 +5,7 @@ $(function() {
       	$('.modal-backdrop.fade').addClass('in');
 
       	if ( $( ".modal" ).is( ":hidden" ) ) {
+      		$( ".modal" ).css("visibility","visible");
 		    $( ".modal" ).slideDown( "slow" );
 		}
 		else {
@@ -22,6 +23,11 @@ $(function() {
       	$('.modal-backdrop.fade').removeClass('in');
       	$('.modal').hide();
 
+      	// var divToClose = $(this).parent().parent();
+      	// console.log(divToClose);
+      	// divToClose.css("visibility","hidden");
+      	// divToClose.removeClass('in');
+      	// divToClose.removeClass('show');
 	});
 
     $('#searchData').keyup(function(){

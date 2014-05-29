@@ -1,28 +1,23 @@
 <div class="book">
-		<div class="bookcover">
-			<%= image_tag @book.cover.url(:medium) %>
+	<div class="bookcover">
+		<%= image_tag @book.cover.url(:medium) %>
+	</div>
+	<div class="booktitle">
+		<%= link_to @book.title, book_path(@book) %>
+	</div>
+	<div class="book-details-row bottom-border">
+		<div class="bookcategory">
+			Genre :&nbsp;<span class="blue-text"><%= @book.category %></span>
 		</div>
-		<div class="booktitle">
-			<%= link_to @book.title, book_path(@book) %>
-		</div>
-		<div class="book-details-row bottom-border">
-			<div class="bookcategory">
-				Genre :&nbsp;<span class="blue-text"><%= @book.category %></span>
-			</div>
-			<div class="bookauthors">
-				Authors :&nbsp;<span class="blue-text"><%= @book.authors %></span>
-			</div> 	
-			<div class="bookisbn">
-				ISBN -&nbsp;<span class="blue-text"><%= @book.isbn %></span>
-			</div>
-		</div>
-		<div class="book-details-row">
-			Description<br />
-			<%= @book.description %>
-		</div>
-		<div class="book-details-row">
-			<% if can? :update, @book %>
-				<%= link_to "Edit", edit_book_path(@book), { :class => "submit-link"} %>
-			<% end %>
+		<div class="bookauthors">
+			Authors :&nbsp;<span class="blue-text"><%= @book.authors %></span>
+		</div> 	
+		<div class="bookisbn">
+			ISBN -&nbsp;<span class="blue-text"><%= @book.isbn %></span>
 		</div>
 	</div>
+	<div class="book-details-row">
+		Description<br />
+		<%= @book.description %>
+	</div>
+</div>

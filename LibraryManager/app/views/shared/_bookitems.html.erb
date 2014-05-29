@@ -1,12 +1,7 @@
-<h2>Book Items [<%= @book.number_of_copies %>]</h2>
-	<% if can? :create, @bookitem %>
-		<div class = "showUserSearch">
-			Add Book Item
-		</div>
-	<% end %>
+<div class="title">Book Copies [<%= @book.number_of_copies %>]</div>
 	<% @book.bookitems.each_with_index { |item, index| %>
 		<div class="bookitem">
-			<div class="serial-number" title = "<%= item.user.name %>">
+			<div class="serial-number" title = "Owner: <%= item.user.name %>">
 			<%= link_to (index + 1), book_bookitem_path(@book,item) %>
 			</div>
 			<% if item.availability %>

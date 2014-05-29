@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140506122852) do
     t.text     "description"
     t.string   "category"
     t.string   "authors"
-    t.integer  "number_of_copies"
+    t.integer  "number_of_copies",   default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "cover_file_name"

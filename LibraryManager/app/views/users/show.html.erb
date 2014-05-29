@@ -1,61 +1,109 @@
 <% content_for :head do %>
   	<style type="text/css">
-		
+		.bookitem-row.size-1 {
+			width: 180px;
+		}
+		.bookitem-row.size-2 {
+			width: 120px;
+		}
+		.bookitem-row.size-3 {
+
+		}
+		.bookitem-row.size-4 {
+
+		}
 	</style>
 <% end %>
-<div>
-	<h1>
-		<%= @user.name %>
-	</h1>
+<div class="title">
+		<%= @user.name %>&nbsp;-&nbsp;
+		Books Donated
 </div>
 
 <div id="page-wrapper">
-	<div class="container-2">
-		<% @user.bookitems.each do |bookitem| %>
-			<div class="item-wrapper">
-				<%= link_to (image_tag bookitem.book.cover.url(:small)), book_bookitem_path(bookitem.book,bookitem) %>
-			</div>
-		<% end %>
-	</div>
-
-	<h2>Book Issues [<%= @user.bookissues.size.to_s %>]</h2>
-
-	<% @user.bookissues.each_with_index { |bookissue, index| %>
-		<% book = bookissue.bookitem.book %>
-		<div class="bookitem">
-			<% if bookissue.status %>
-				<div class="serial-number is-false" title = "Still issued...">
-				</div>
-			<% else %>	
-				<div class="serial-number is-true" title = "Book returned...">
-				</div>
-			<% end %>
-			<div class="bookitem-row">
-				    <div class="row-label"><strong>Book:</strong></div>
-				    <div class="row-value"><%= link_to book.title, book_path(book) %></div>
-			</div>
-			<div class="bookitem-row">
-			    <div class="row-label"><strong>Date of Issue:</strong></div>
-			    <div class="row-value"><%= bookissue.date_of_issue.to_date %></div>
-			</div>
-			<% if bookissue.status %>
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Date of Return:</strong></div>
-				    <div class="row-value"><%= bookissue.date_of_return.to_date %></div>
-				</div>
-				<div class="bookitem-row last">
-					<% if can? :update, @bookissue %>
-				  		<%= link_to "Return this copy", book_bookitem_bookissue_path(book,bookissue.bookitem,bookissue.id), method: :patch, :class => "submit-link" %>
-				  	<% end %>
-				</div>
-			<% else %>	
-				<div class="bookitem-row">
-				    <div class="row-label"><strong>Date of Actual Return:</strong></div>
-				    <div class="row-value"><%= bookissue.date_of_actual_return.to_date %></div>
+	<!--<% if @user.bookitems.size > 0 %>
+		<div class="container-2">
+			<% @user.bookitems.each do |bookitem| %>
+				<div class="item-wrapper">
+					<%= link_to (image_tag bookitem.book.cover.url(:small)), book_bookitem_path(bookitem.book,bookitem) %>
 				</div>
 			<% end %>
 		</div>
-	<% } %>
+	<% else %>
+		No Books donated...
+	<% end %>-->
+
+	<% if @user.bookitems.size > 0 %>
+		<% @user.bookitems.each_with_index { |bookitem, index| %>
+			<% book = bookitem.book %>
+			<div class="bookitem">
+				<div class="serial-number">
+					<%= index + 1 %>
+				</div>
+				<div class="bookitem-row size-1">
+					    <div class="row-label"><strong>Book:</strong></div>
+					    <div class="row-value"><%= book.title %></div>
+				</div>
+				<div class="bookitem-row size-2">
+				    <div class="row-label"><strong>Author</strong></div>
+				    <div class="row-value"><%= book.authors %></div>
+				</div>
+				<div class="bookitem-row size-1">
+				    <div class="row-label"><strong>Category</strong></div>
+				    <div class="row-value"><%= book.category %></div>
+				</div>
+				<div class="bookitem-row last">
+					<%= link_to "View this copy", book_bookitem_path(book,bookitem), :class => "submit-link" %>
+				</div>
+			</div>
+			<!--<%= link_to (image_tag bookitem.book.cover.url(:small)), book_bookitem_path(bookitem.book,bookitem) %>-->
+							
+		<% } %>
+	<% else %>
+		No Books donated...
+	<% end %>
+
+	<div class="title">Book Issues [<%= @user.bookissues.size.to_s %>]</div>
+
+	<% if @user.bookitems.size > 0 %>
+		<% @user.bookissues.each_with_index { |bookissue, index| %>
+			<% book = bookissue.bookitem.book %>
+			<div class="bookitem">
+				<% if bookissue.status %>
+					<div class="serial-number is-false" title = "Still issued...">
+					</div>
+				<% else %>	
+					<div class="serial-number is-true" title = "Book returned...">
+					</div>
+				<% end %>
+				<div class="bookitem-row bookname">
+					    <div class="row-label"><strong>Book:</strong></div>
+					    <div class="row-value"><%= link_to book.title, book_path(book) %></div>
+				</div>
+				<div class="bookitem-row">
+				    <div class="row-label"><strong>Date of Issue:</strong></div>
+				    <div class="row-value"><%= bookissue.date_of_issue.to_date %></div>
+				</div>
+				<% if bookissue.status %>
+					<div class="bookitem-row">
+					    <div class="row-label"><strong>Date of Return:</strong></div>
+					    <div class="row-value"><%= bookissue.date_of_return.to_date %></div>
+					</div>
+					<div class="bookitem-row last">
+						<% if can? :update, @bookissue %>
+					  		<%= link_to "Return this copy", book_bookitem_bookissue_path(book,bookissue.bookitem,bookissue.id), method: :patch, :class => "submit-link" %>
+					  	<% end %>
+					</div>
+				<% else %>	
+					<div class="bookitem-row">
+					    <div class="row-label"><strong>Date of Actual Return:</strong></div>
+					    <div class="row-value"><%= bookissue.date_of_actual_return.to_date %></div>
+					</div>
+				<% end %>
+			</div>
+		<% } %>
+	<% else %>
+		No Books Issues...
+	<% end %>
 	
 
 </div>

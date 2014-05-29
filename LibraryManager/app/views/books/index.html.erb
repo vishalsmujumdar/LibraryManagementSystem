@@ -1,11 +1,58 @@
-<h2>Import Books from CSV / Excel file</h2>
-<%= form_tag import_books_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
+<% content_for :head do %>
+  	<script type="text/javascript">
+    	<%= render :partial => "shared/searchuser", :formats=>[:js] %>
+  	</script>
+  	<style type="text/css">
+
+  	</style>
 <% end %>
-<h1>
+
+<div class="modal-backdrop fade" style="visibility:hidden">	
+</div>
+<div class="modal" style="display:none;">
+	<div class="modal-header">
+		<div class="modal-header-text">
+			Import Books from CSV / Excel file
+		</div>
+		<div class="modal-close"></div>
+	</div>
+	<div class="modal-body">
+		<div class="modal-row first">
+			<%= form_tag import_books_path, multipart: true do %>
+			  <%= file_field_tag :file %>
+			  <%= submit_tag "Import", { :id => "excel_submit" } %>
+			<% end %>
+		</div>
+	</div>
+</div>
+
+<div class="title">
 	All Books
-</h1>
+</div>
+
+<div class="menu">
+	<% if can? :create, @book %>
+		<!-- <h2>Import Books from CSV / Excel file</h2>
+		<%= form_tag import_books_path, multipart: true do %>
+		  <%= file_field_tag :file %>
+		  <%= submit_tag "Import" %>
+		<% end %> -->
+		<div class="menu-item">
+			<div class = "submit-link showUserSearch">
+				Excel Import
+			</div>			
+		</div>
+		<div class="menu-item">
+			<div class = "submit-link">
+				<%= link_to "Add new book", new_book_path, :class => "submit-link"  %>	
+			</div>
+		</div>
+
+		
+	<% end %>	
+</div>
+	
+
 
 <% @books.each do |book| %>
 	<div class="book">
@@ -43,7 +90,4 @@
 
 
 	</div>
-<% end %>
-<% if can? :create, @book %>
-	<%= link_to "Add new book", new_book_path %>
 <% end %>

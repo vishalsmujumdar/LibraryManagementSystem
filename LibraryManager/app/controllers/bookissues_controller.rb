@@ -8,12 +8,16 @@ class BookissuesController < ApplicationController
 	end
 
 	def create
-		# create bookissue object => bookitem_id, user_id
+		if params[:w_user]
+	      @user = add_new_user(user_params)  
+	    else
+		  @paramuser = params[:user];
+	  	  @user = User.where(["employee_id = ?", @paramuser[:employee_id].to_i]).first
+  		end
+    	# create bookissue object => bookitem_id, user_id
 		@bookitem = Bookitem.find(params[:bookitem_id])
 		@bookissue = @bookitem.bookissues.new
-		@paramuser = params[:user];
-  		@user = User.where(["employee_id = ?", @paramuser[:employee_id].to_i]).first
-  		@bookissue.user_id = @user[:id]
+		@bookissue.user_id = @user[:id]
 
   		# set dates for issue and return
   		@bookissue.date_of_issue = Date.today
@@ -29,7 +33,6 @@ class BookissuesController < ApplicationController
 		else
 			render "new"
 		end
-
 	end
 
 	def update
@@ -47,7 +50,10 @@ class BookissuesController < ApplicationController
 		else
 			render :back
 		end
-
-
   	end
+
+  	private
+      def user_params
+        params.require(:user).permit(:name, :email, :employee_id)
+      end
 end

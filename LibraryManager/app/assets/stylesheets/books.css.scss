@@ -2,4 +2,95 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.is-false {
+  width: 31px;
+  height: 31px;
+  background-image: asset-data-url('false.png');
+  -webkit-background-size: 31px 31px;
+  background-size: 31px 31px;
+  background-repeat: no-repeat;     
+}
+.is-true {
+  width: 31px;
+  height: 31px;
+  background-image: asset-data-url('true.png');
+  -webkit-background-size: 31px 31px;
+  background-size: 31px 31px;
+  background-repeat: no-repeat;
+}
 
+
+.modal-backdrop {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1040;
+      background-color: #000000;
+    } 
+    .fade {
+      -webkit-transition: opacity 0.15s linear;
+      -moz-transition: opacity 0.15s linear;
+      -ms-transition: opacity 0.15s linear;
+      -o-transition: opacity 0.15s linear;
+      transition: opacity 0.15s linear;
+      opacity: 0;
+    }
+    .in {
+      opacity: 0.8;
+    }
+    .modal {
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      z-index: 1050;
+      overflow: auto;
+      width: 560px;
+      margin: -0px 0 0 -280px;
+      background-color: #ffffff;
+      /*border: 1px solid #999;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      -webkit-border-radius: 6px;
+      -moz-border-radius: 6px;
+      border-radius: 6px;*/
+      -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+      -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+      -webkit-background-clip: padding-box;
+      -moz-background-clip: padding-box;
+      background-clip: padding-box;
+    }
+    .modal-header {
+      padding: 10px;
+      width: 96.5%;
+      background: #4472B9;
+      color: #ffffff;
+      overflow: hidden;
+    }
+    .modal-header-text {
+      float: left;
+    }
+    .modal-close {
+      float: right;
+      height: 20px;
+      width: 20px;
+      background: asset-data-url('close-1.png');
+      background-size: 20px;
+      cursor: pointer;
+    }
+    .modal-body {
+      min-height: 295px;
+    }
+    .modal-row {
+      padding: 10px;
+      overflow: hidden;
+    }
+
+    .avatar {
+      background: asset-data-url('avatar.png');
+      float: left;
+      height: 70px;
+      width: 70px;
+      background-size: 70px;
+    }

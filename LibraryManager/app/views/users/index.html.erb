@@ -1,28 +1,11 @@
 <% content_for :head do %>
 	<script type="text/javascript">
-		function Randomize() {
-			var images = new Array("/assets/1.jpg",
-								   "/assets/2.jpg",
-								   "/assets/3.jpg",
-								   "/assets/7.jpg",
-								   "/assets/8.jpg",
-								   "/assets/9.jpg",
-								   "/assets/10.jpg",
-								   "/assets/11.jpg",
-								   "/assets/12.jpg",
-								   "/assets/13.jpg",
-								   "/assets/14.jpg"
-								   );
-			var imageNum = Math.floor(Math.random() * images.length);
-			document.getElementById("banner").style.background = "url('" + images[imageNum] + "')";
-		}
-
-		window.onload = Randomize;
+		
 	</script>
 <% end %>
 
 <% content_for :banner do %>
-  	<div id="banner-container">
+  	<!-- <div id="banner-container">
 		<div id="banner-inner-container">
 			<div id="banner"></div>
 			<div id="banner-main-group" class="">
@@ -32,7 +15,9 @@
 				<div id="banner-searchbar" class="">
 					<input type="text" id="searchBookData" class="search-input" placeholder="Search for your favorite book"></input>
 					<div id="bookSearchResults" class="book-search-results" style="visibility:hidden">
-
+						<div class="book-search-results-content">
+						
+						</div>
 					</div>
 				</div>
 				<div id="banner-text" class="">
@@ -40,11 +25,12 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
+	<%= render :partial => "layouts/banner" %>
 <% end %>
 
 <div id="page-wrapper">
-	<div class="container-2">
+	<!-- <div class="container-2">
 		<% if user_signed_in? %>
 			<% @user.bookissues.each do |bookissue| %>
 				<% if bookissue.status %>
@@ -56,10 +42,40 @@
 			<% end %>
 		<% else %>
 			<% @books.each do |book| %>
-					<div class="item-wrapper" title="<% book.title %>">
+					<div class="item-wrapper">
 						<%= link_to (image_tag book.cover.url(:small)), book_path(book) %>
 					</div>
 			<% end %>
 		<% end %>
-	</div>
+	</div> -->
+
+	<% @users.each do |user| %>
+		<div class="user">
+			<div class="avatar"></div>
+				<div class="row">
+					<div class="row-left">
+						<div class="row-left-top">
+							<div class="name">
+								 <%= label :name, user.name %>
+							</div>
+							<div class="empid">
+								 <%= label :employee_id, user.employee_id %>
+							</div>
+						</div>
+						<div class="row-left-bottom">
+							<div class="email">
+								 <%= label :email, user.email %>
+							</div>
+						</div>
+					</div>
+					<div class="row-right">
+						<div class="row-btn">
+							 <%= link_to "Manage", user_path(user), :class => "submit-link" %>
+						</div>
+					</div>	
+				</div>
+		</div>
+	<% end %>
+
+
 </div>

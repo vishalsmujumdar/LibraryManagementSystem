@@ -3,9 +3,17 @@
   	<%= javascript_include_tag "app.js" %>
   	<%= javascript_include_tag "controllers.js" %>
 <% end %>
-<h1>new boook</h1>
+<div class="title">Add a new book</div>
 
 <%= form_for @book, :html => { :multipart => true } do |f| %>
+	<% if @book.errors.any? %>
+		<div class="alert-box alert">
+			<% @book.errors.full_messages.each do |msg| %>
+				<p><%= msg %></p>
+			<% end %>
+		</div>
+	<% end %>
+
 	<p>
 		<%= f.label :isbn, "ISBN - " %><br />
 		<%= f.text_field :isbn %>
@@ -40,8 +48,15 @@
 		<%= f.label :cover, "Cover photo"%><br />
 		<%= f.file_field :cover %>
 	</p>
-	<p>
-		<%= f.submit "Add book"%>
-	</p>
+	<div class="menu">
+		<div class="menu-item">
+			<%= f.submit "Add book", { :class => "submit-link" }  %>
+		</div>
+		<div class="menu-item">
+			<div class = "submit-link">
+				<%= link_to "Back", request.env["HTTP_REFERER"], { :class => "submit-link" } %>
+			</div>
+		</div>
+	</div>
 
 <% end %>

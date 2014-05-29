@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :books, through: :bookissues
 
   # Validations
-  validates :name, presence: true, length: { minimum: 5 }
-
+  #validates :name, presence: true
+  #validates :employee_id, numericality: { only_integer: true }, length: { is: 6 }
   
 end

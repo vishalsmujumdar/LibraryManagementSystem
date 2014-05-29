@@ -1,5 +1,5 @@
 <div id="loginbox">
-	<h2>Sign in</h2>
+	<div class="title">Sign in</div>
 
 	<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 		<div class="loginbox-item">
@@ -7,7 +7,7 @@
 				<%= f.label :email %>
 			</div>
 			<div class="">
-			<%= f.email_field :email, autofocus: true %>
+				<%= f.email_field :email, autofocus: true %>
 			</div>
 		</div>
 

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :users
+  resources :users do
+    member do
+      post "/add_new_user" => "users#add_new_user"
+    end
+  end
 
   resources :books do
     collection { post :import }

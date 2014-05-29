@@ -1,3 +1,8 @@
+<% content_for :head do %>
+	<style type="text/css">
+		
+	</style>
+<% end %>
 <header>
 	<div id="header-container">
 		<div id="site-title">
@@ -24,9 +29,34 @@
 					<%= link_to "Sign up", new_user_registration_path %>
 				</div>
 				<div class="nav-item">
-					<%= link_to "Sign in", new_user_session_path %>
+					<div class="signin">
+					<!-- 	<%= link_to "Sign in", new_user_session_path %>
+					 -->
+					 Sign In
+					 </div>
 				</div>
+				<%= form_for User.new, url: user_session_path do |f| %>
+					<div class="arrow-up fade" style="visibility:hidden"></div>
+					<div class="login-box fade" style="visibility:hidden">
+						<div class="header">
+							<div class="modal-header-text">
+								Log In
+							</div>
+							<div class="modal-close"></div>				
+						</div>
+						<div class="item">
+							<%= f.email_field :email, autofocus: true, placeholder: "Enter email" %>
+						</div>
+						<div class="item">
+							<%= f.password_field :password, autocomplete: "off", placeholder: "Enter password" %>
+						</div>
+						<div class="item">
+							<%= f.submit "Sign in" %>
+						</div>
+					</div>	
+				<% end %>
 			<% end %>
 		</div>
+		
 	</div>
 </header>
